@@ -30,6 +30,7 @@
         .hero-cover .font-brightwall {
             color: #d1e2f2; 
             text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2; 
         }
         
         .font-cardo {
@@ -128,15 +129,22 @@
 </head>
 <body>
 
-    <!-- 1. COVER UTAMA -->
+    <!-- 1. COVER UTAMA (NAMA BERSUSUN & NAMA TAMU OTOMATIS) -->
     <section class="hero-cover">
-        <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">wedding invitation</p>
-        <h1 class="font-brightwall" style="font-size: 3.8rem; margin: 15px 0;">Samuel & Fiorentia</h1>
-        <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">15 Agustus 2026</p>
+        <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); margin-bottom: 15px;">wedding invitation</p>
         
-        <div style="margin-top: 60px;">
+        <!-- NAMA SUSUN KE BAWAH -->
+        <h1 class="font-brightwall" style="font-size: 3.8rem;">
+            Samuel <br>
+            <span style="font-size: 2.5rem; display: block; margin: 5px 0;">&</span> 
+            Fiorentia
+        </h1>
+        
+        <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); margin-top: 20px;">15 Agustus 2026</p>
+        
+        <div style="margin-top: 50px;">
             <p class="font-cardo" style="font-size: 1.1rem; opacity: 0.9; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">Dear:</p>
-            <h3 class="font-cardo" style="font-size: 1.6rem; margin-top: 5px; font-weight: normal; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">nama penerima</h3>
+            <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.6rem; margin-top: 5px; font-weight: normal; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">Nama Tamu</h3>
         </div>
     </section>
 
@@ -152,7 +160,7 @@
 
     <hr>
 
-    <!-- 3. THE GROOM (MENGGUNAKAN THEGROOM.PNG) -->
+    <!-- 3. THE GROOM -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
         <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -162,7 +170,7 @@
 
     <hr>
 
-    <!-- 4. THE BRIDE (MENGGUNAKAN THEBRIDE.PNG) -->
+    <!-- 4. THE BRIDE -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
         <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -172,7 +180,7 @@
 
     <hr>
 
-    <!-- 5. ACARA & SLIDESHOW -->
+    <!-- 5. ACARA & SLIDESHOW PRE-WEDDING -->
     <section class="section" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
         
         <div class="slideshow-container">
@@ -202,6 +210,7 @@
             <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
 
+            <!-- TAUTAN GOOGLE MAPS PENDEK RESMI -->
             <a href="https://maps.app.goo.gl/ecysGogaRWGykVAC8" target="_blank" class="btn">Buka Peta Lokasi</a>
         </div>
     </section>
@@ -223,16 +232,16 @@
 
     <hr>
 
-    <!-- 7. PENUTUP (MENGGUNAKAN SEEYOU.JPG.JPG) -->
+    <!-- 7. PENUTUP -->
     <section class="section font-cardo" style="padding-bottom: 80px;">
         <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
             "Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given."
         </p>
-        <!-- Menambahkan foto seeyou sebelum teks salam penutup -->
         <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
         <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
     </section>
 
+    <!-- --- JAVASCRIPT GABUNGAN (SLIDESHOW & NAMA TAMU OTOMATIS) --- -->
     <script>
         let slideIndex = 0;
         showSlides();
@@ -248,6 +257,15 @@
             slides[slideIndex-1].style.display = "block";  
             setTimeout(showSlides, 3000); 
         }
+
+        function getGuestName() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const guestName = urlParams.get('to');
+            if (guestName) {
+                document.getElementById("nama-tamu").innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            }
+        }
+        window.onload = getGuestName;
     </script>
 
 </body>
