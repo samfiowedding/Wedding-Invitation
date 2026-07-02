@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Samuel & Fiorentia</title>
+    
+    <!-- Mengambil Font Cardo & Playfair Display dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- UTURAN DESAIN DASAR --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Cardo', serif; 
+            background-color: #fbf9f5; 
+            color: #333333; 
+            text-align: center; 
+            line-height: 1.8;
+        }
+        
+        /* Font Brightwall (Diwakili Playfair Display Italic sebagai alternatif gratis) */
+        .font-brightwall {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            color: #bfa15f; /* Warna emas elegan */
+        }
+        
+        .font-cardo {
+            font-family: 'Cardo', serif;
+        }
+
+        /* Pembatas Seksi (Jeda) */
+        .section {
+            padding: 60px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Pengaturan Gambar / Foto */
+        .foto-prewed {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Gaya Tombol */
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: #bfa15f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #a38545; }
+
+        /* --- SISTEM SLIDESHOW --- */
+        .slideshow-container {
+            max-width: 500px;
+            position: relative;
+            margin: 30px auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .mySlides {
+            display: none;
+        }
+        .mySlides img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        /* Efek Transisi Memudar */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e6dfd3;
+            width: 50%;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BAGIAN AWAL (HERO) -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 100px;">
+        <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;">Wedding Invitation</p>
+        <h1 class="font-brightwall" style="font-size: 3.5rem; margin: 20px 0;">Samuel & Fiorentia</h1>
+        <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 1px;">15 Agustus 2026</p>
+        
+        <!-- JEDA DAN DEAR PENERIMA -->
+        <div style="margin-top: 80px;">
+            <p class="font-cardo" style="font-size: 1.1rem; color: #666;">Dear:</p>
+            <h3 class="font-cardo" style="font-size: 1.5rem; margin-top: 5px; font-weight: normal;">Nama Penerima</h3>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- 2. AYAT ALKITAB -->
+    <section class="section">
+        <!-- SILAHKAN GANTI LINK URL DI DALAM SRC CHROME/NOTEPAD ANDA DENGAN FOTO ANDA -->
+        <img class="foto-prewed" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Foto Ayat">
+        <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 20px;">
+            "Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan."
+            <br>
+            <span style="font-weight: bold; font-style: normal; display: block; margin-top: 10px;">Kolose 3:14</span>
+        </p>
+    </section>
+
+    <hr>
+
+    <!-- 3. PROFILE THE GROOM -->
+    <section class="section">
+        <p class="font-cardo" style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; color: #777;">The Groom</p>
+        <!-- SILAHKAN GANTI LINK URL DENGAN FOTO SAMUEL -->
+        <img class="foto-prewed" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600" alt="Samuel">
+        <h2 class="font-brightwall" style="font-size: 2.5rem; margin: 10px 0;">Samuel Widarto C.,S.Ak.</h2>
+        <p class="font-cardo" style="color: #666;">Son of (�) Mr. Pilemon Chandra & Mrs. Liauw Kian Ming</p>
+    </section>
+
+    <hr>
+
+    <!-- 4. PROFILE THE BRIDE -->
+    <section class="section">
+        <p class="font-cardo" style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; color: #777;">The Bride</p>
+        <!-- SILAHKAN GANTI LINK URL DENGAN FOTO FIORENTIA -->
+        <img class="foto-prewed" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" alt="Fiorentia">
+        <h2 class="font-brightwall" style="font-size: 2.5rem; margin: 10px 0;">Fiorentia Tessa W., S.Ak.</h2>
+        <p class="font-cardo" style="color: #666;">Daughter of Weldy Eko T. & Mrs. Susanna</p>
+    </section>
+
+    <hr>
+
+    <!-- 5. BAGIAN ACARA & SLIDESHOW -->
+    <section class="section" style="background-color: #f5f1e9; border-radius: 20px; padding: 40px 20px;">
+        
+        <!-- SLIDESHOW FOTO PRE-WEDDING -->
+        <div class="slideshow-container">
+            <!-- Foto Slide 1 (Bisa diganti tautan fotonya nanti) -->
+            <div class="mySlides fade">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600">
+            </div>
+            <!-- Foto Slide 2 -->
+            <div class="mySlides fade">
+                <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=600">
+            </div>
+            <!-- Foto Slide 3 -->
+            <div class="mySlides fade">
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600">
+            </div>
+        </div>
+
+        <!-- INFO DETAIL ACARA -->
+        <div class="font-cardo">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 1px;">Holy Matrimony</h2>
+            <p>Saturday, August 15th 2026</p>
+            <p>at 11.00 - 12.00 WIB</p>
+            <p style="font-weight: bold; margin-top: 5px;">Luminor Hotel, Surabaya</p>
+            <p style="font-size: 0.9rem; color: #555;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+            
+            <div style="margin: 40px 0; border-top: 1px dashed #bfa15f; width: 30%; margin-left: auto; margin-right: auto;"></div>
+
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 1px;">Reception</h2>
+            <p>Saturday, August 15th 2026</p>
+            <p>at 12.00 - 13.30 WIB</p>
+            <p style="font-weight: bold; margin-top: 5px;">Luminor Hotel, Surabaya</p>
+            <p style="font-size: 0.9rem; color: #555;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+
+            <!-- LINK GOOGLE MAPS LUMINOR HOTEL JEMURSARI SURABAYA -->
+            <a href="https://maps.app.goo.gl/uXvbeofN6m9q69vP7" target="_blank" class="btn">Buka Peta Lokasi</a>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- 6. WEDDING GIFT -->
+    <section class="section font-cardo">
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px; font-weight: normal; letter-spacing: 2px;">Wedding Gift</h2>
+        <p style="font-size: 1rem; color: #555; margin-bottom: 25px; padding: 0 20px;">
+            Your presence is the greatest gift of all. However, if you are unable to attend and would like to send us your wishes in the form of a gift, please use the button below:
+        </p>
+        
+        <div style="background-color: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); display: inline-block; min-width: 280px;">
+            <p style="font-weight: bold; font-size: 1.1rem; letter-spacing: 1px; color: #1e3a8a;">BCA 0881-484-802</p>
+            <p style="font-size: 0.95rem; color: #555; margin-top: 5px;">a.n. Samuel Widarto Chandra</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- 7. PENUTUP -->
+    <section class="section font-cardo" style="padding-bottom: 100px;">
+        <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 30px; padding: 0 20px;">
+            "Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given."
+        </p>
+        <h3 style="font-size: 1.4rem; font-weight: normal; letter-spacing: 1px; color: #bfa15f;">See you on our wedding day!</h3>
+    </section>
+
+    <!-- --- SCRIPT JAVASCRIPT UNTUK JALANKAN SLIDESHOW --- -->
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Gambar otomatis berganti setiap 3 detik
+        }
+    </script>
+
+</body>
+</html>
