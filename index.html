@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
+    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -17,7 +18,6 @@
             color: #2c3e50; 
             text-align: center; 
             line-height: 1.8;
-            /* Mengunci scroll di awal secara ketat */
             overflow: hidden; 
             height: 100vh; 
         }
@@ -58,7 +58,6 @@
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        /* Saat tombol diklik, cover ditarik ke atas */
         .hero-cover.opened {
             transform: translateY(-100vh);
         }
@@ -72,9 +71,7 @@
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
-        /* --- KONTEN UTAMA --- 
-           Dibuat "display: none" agar tidak memakan ruang sama sekali sebelum tombol diklik 
-        */
+        /* --- KONTEN UTAMA --- */
         #main-content {
             display: none; 
             opacity: 0;
@@ -154,6 +151,90 @@
             opacity: 0.6;
         }
 
+        /* --- DESAIN FORM RSVP LUXURY --- */
+        .rsvp-section {
+            background: rgba(44, 62, 80, 0.9);
+            color: white;
+            padding: 50px 25px;
+            text-align: left;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+        .rsvp-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .rsvp-p {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .form-group label span { color: #e74c3c; } 
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            border-radius: 4px;
+            font-family: 'Cardo', serif;
+            font-size: 1rem;
+            appearance: none; 
+        }
+        .form-control::placeholder { color: rgba(255,255,255,0.5); }
+        .form-control:focus { outline: none; border-color: white; background: rgba(255,255,255,0.1); }
+        select.form-control option { color: #2c3e50; } 
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        .radio-label input[type="radio"] {
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+            accent-color: #d4af37; 
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: rgba(255,255,255,0.85);
+            color: #3a536b;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'Cardo', serif;
+            transition: 0.3s;
+        }
+        .btn-submit:hover { background: white; }
+        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
         .gift-box {
             background-color: #ffffff;
             border: 1px solid #d1e2f2;
@@ -232,16 +313,19 @@
 </head>
 <body>
 
+    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
+    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
+    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
@@ -266,8 +350,10 @@
         </div>
     </section>
 
+    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
+        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -279,6 +365,7 @@
 
         <hr>
 
+        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -292,6 +379,7 @@
 
         <hr>
 
+        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -305,6 +393,7 @@
 
         <hr>
 
+        <!-- ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             <div class="kolase-container">
                 <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
@@ -336,6 +425,57 @@
 
         <hr>
 
+        <!-- FORM RSVP (TERHUBUNG KE GOOGLE SHEETS) -->
+        <section class="section fade-in-element" style="padding-top: 0;">
+            <div class="rsvp-section">
+                <h2 class="rsvp-heading">RSVP</h2>
+                <p class="rsvp-p">Kindly help us prepare our wedding event better by confirming your attendance through the following RSVP form:</p>
+                
+                <form id="rsvpForm" onsubmit="submitRSVP(event)">
+                    <div class="form-group">
+                        <label>Name <span>*</span></label>
+                        <input type="text" id="rsvpName" class="form-control" placeholder="..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Number of Guest(s) <span>*</span></label>
+                        <select id="rsvpGuest" class="form-control" required>
+                            <option value="0" disabled selected>0</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Persons</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Will you be attending? <span>*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="Yes. I will attend Holy Matrimony" required>
+                                Yes. I will attend Holy Matrimony
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="Yes. I will attend Reception">
+                                Yes. I will attend Reception
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="Yes. I will attend Both">
+                                Yes. I will attend Both
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="No. Sorry, I can't come">
+                                No. Sorry, I can't come
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">SUBMIT</button>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- WEDDING GIFT -->
         <section class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -358,6 +498,7 @@
 
         <hr>
 
+        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -367,6 +508,7 @@
         </section>
     </div>
 
+    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -374,30 +516,22 @@
         const coverScreen = document.getElementById("coverScreen");
         const mainContent = document.getElementById("main-content");
 
-        // FUNGSI MEMBUKA UNDANGAN
         function openInvitation() {
-            // 1. Geser cover ke atas (Efek Tirai)
             coverScreen.classList.add("opened");
-            
-            // 2. Munculkan struktur HTML bagian bawah
             mainContent.style.display = "block";
             
-            // 3. Tambahkan jeda waktu agar transisi opacity terlihat halus
             setTimeout(() => {
                 mainContent.classList.add("show");
             }, 100);
             
-            // 4. Buka kunci scroll
             document.body.style.overflow = "auto";
             document.body.style.overflowX = "hidden";
             document.body.style.height = "auto";
 
-            // 5. Mainkan musik
             audio.play().then(() => {
                 musicBtn.style.display = "flex";
             }).catch(err => console.log("Audio play di-block browser sementara"));
 
-            // 6. Picu animasi elemen awal
             setTimeout(handleScrollAnimation, 300);
         }
 
@@ -416,6 +550,7 @@
             const guestName = urlParams.get('to');
             if (guestName) {
                 document.getElementById("nama-tamu").innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
+                document.getElementById("rsvpName").value = decodeURIComponent(guestName.replace(/\+/g, ' '));
             }
         }
 
@@ -424,6 +559,37 @@
             navigator.clipboard.writeText(norekText).then(() => {
                 alert("Nomor rekening berhasil disalin!");
             });
+        }
+
+        /* --- LOGIKA PENGIRIMAN RSVP KE GOOGLE SHEETS --- */
+        function submitRSVP(e) {
+            e.preventDefault(); 
+            
+            // Mengubah tombol menjadi loading agar tamu tahu sedang diproses
+            const btnSubmit = document.querySelector('.btn-submit');
+            btnSubmit.innerHTML = "MENGIRIM...";
+            btnSubmit.disabled = true;
+
+            // Link Web App Google Sheets Anda
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzjJAsTfWnkwZmht3iajvirhPIL10wmzP6WeQXo9ZNme26ln9aMKndvphPJXbw0KjhU/exec';
+            
+            const formData = new FormData();
+            formData.append('nama', document.getElementById("rsvpName").value);
+            formData.append('jumlah', document.getElementById("rsvpGuest").value);
+            formData.append('kehadiran', document.querySelector('input[name="attendance"]:checked').value);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    alert('Terima kasih! Konfirmasi kehadiran Anda telah tersimpan.');
+                    document.getElementById("rsvpForm").reset(); // Mengosongkan form
+                    btnSubmit.innerHTML = "SUBMIT";
+                    btnSubmit.disabled = false;
+                })
+                .catch(error => {
+                    alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
+                    btnSubmit.innerHTML = "SUBMIT";
+                    btnSubmit.disabled = false;
+                });
         }
 
         const fadeElements = document.querySelectorAll('.fade-in-element');
@@ -440,8 +606,6 @@
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
             getGuestName();
-            
-            // Jaga-jaga: pastikan scroll selalu ada di paling atas ketika halaman baru dimuat
             window.scrollTo(0, 0); 
         };
     </script>
