@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
+    <!-- Mengambil Font Cardo & Playfair Display dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -16,6 +17,7 @@
             color: #2c3e50; 
             text-align: center; 
             line-height: 1.8;
+            overflow-x: hidden; /* Mencegah halaman bergeser ke samping secara tidak sengaja */
         }
         
         .font-brightwall {
@@ -41,9 +43,8 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Menyebar konten agar vertikal tidak menumpuk di tengah wajah */
+            justify-content: space-between; 
             align-items: center;
-            /* Lapisan diperhalus agar foto background lebih jelas terlihat */
             background: linear-gradient(rgba(44, 62, 80, 0.45), rgba(44, 62, 80, 0.55)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
             color: white;
             padding: 40px 20px;
@@ -66,22 +67,22 @@
             display: block;
         }
 
-        /* --- SISTEM STRUKTUR KOLASE GAMBAR (GRID) --- */
+        /* --- SISTEM STRUKTUR KOLASE GAMBAR (GRID PORTRAT 3:4) --- */
         .kolase-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Membagi jadi 2 kolom sejajar */
+            grid-template-columns: repeat(2, 1fr); 
             gap: 12px;
             max-width: 500px;
             margin: 30px auto;
             padding: 0 10px;
         }
         .kolase-item {
-            background-width: 100%;
+            width: 100%;
             border: 4px solid white;
             box-shadow: 0 6px 15px rgba(44, 62, 80, 0.1);
             border-radius: 6px;
             overflow: hidden;
-            aspect-ratio: 1 / 1; /* Membuat frame foto menjadi kotak presisi */
+            aspect-ratio: 3 / 4; /* Mengubah proporsi frame menjadi 3:4 tegak portrait */
         }
         .kolase-item img {
             width: 100%;
@@ -112,7 +113,6 @@
             margin: 40px auto;
         }
 
-        /* Kotak rekening bank yang bisa di-copas dengan mudah */
         .gift-box {
             background-color: #eef3f7;
             border: 1px dashed #3a536b;
@@ -126,7 +126,7 @@
             font-size: 1.3rem; 
             letter-spacing: 1.5px; 
             color: #2c3e50;
-            user-select: all; /* Memudahkan tamu untuk langsung blok & copy nomor ketika di-klik/tekan lama */
+            user-select: all; 
             background: #ffffff;
             padding: 4px 12px;
             border-radius: 4px;
@@ -134,10 +134,29 @@
             display: inline-block;
             margin-bottom: 5px;
         }
+
+        /* --- RESPONSIVITAS UKURAN FONT SUPAYA 1 BARIS TANPA SCROLL --- */
+        .nama-lengkap {
+            font-size: 1.6rem; /* Ukuran font ideal untuk HP agar pas 1 baris */
+            margin: 10px 0; 
+            white-space: nowrap;
+        }
+        .ortu-lengkap {
+            font-size: 0.85rem; /* Mengecilkan sedikit info orang tua agar tetap 1 baris di layar kecil */
+            color: #555; 
+            white-space: nowrap;
+        }
+
+        /* Jika dibuka di layar laptop/tablet yang lebih lebar, font membesar otomatis secara aman */
+        @media(min-width: 480px) {
+            .nama-lengkap { font-size: 2.3rem; }
+            .ortu-lengkap { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- 1. COVER UTAMA -->
     <section class="hero-cover">
         <div style="margin-top: 20px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">wedding invitation</p>
@@ -160,6 +179,7 @@
         </div>
     </section>
 
+    <!-- 2. AYAT ALKITAB -->
     <section class="section">
         <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
         <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -171,26 +191,30 @@
 
     <hr>
 
+    <!-- 3. THE GROOM -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
         <img class="foto-prewed" src="thegroom.png" alt="Samuel">
-        <h2 class="font-brightwall" style="font-size: 2.3rem; margin: 10px 0; white-space: nowrap;">Samuel Widarto Chandra.,S.Ak.</h2>
-        <p class="font-cardo" style="color: #555; font-size: 0.95rem; white-space: nowrap;">Son of (†) Mr. Pilemon Chandra & Mrs. Liauw Kian Ming</p>
+        <h2 class="font-brightwall nama-lengkap">Samuel Widarto Chandra.,S.Ak.</h2>
+        <p class="font-cardo ortu-lengkap">Son of (†) Mr. Pilemon Chandra & Mrs. Liauw Kian Ming</p>
     </section>
 
     <hr>
 
+    <!-- 4. THE BRIDE -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
         <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
-        <h2 class="font-brightwall" style="font-size: 2.3rem; margin: 10px 0; white-space: nowrap;">Fiorentia Tessa Wellyana.,S.Ak.</h2>
-        <p class="font-cardo" style="color: #555; font-size: 0.95rem; white-space: nowrap;">Daughter of Mr. Weldy Eko Tjahjono & Mrs. Susanna</p>
+        <h2 class="font-brightwall nama-lengkap">Fiorentia Tessa Wellyana.,S.Ak.</h2>
+        <p class="font-cardo ortu-lengkap">Daughter of Mr. Weldy Eko Tjahjono & Mrs. Susanna</p>
     </section>
 
     <hr>
 
+    <!-- 5. ACARA & KOLASE FOTO -->
     <section class="section" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
         
+        <!-- KOLASE 6 FOTO PRE-WEDDING PROPORSI TEGAK 3:4 -->
         <div class="kolase-container">
             <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
             <div class="kolase-item"><img src="prewed2.jpg.jpg"></div>
@@ -221,6 +245,7 @@
 
     <hr>
 
+    <!-- 6. WEDDING GIFT -->
     <section class="section font-cardo">
         <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
         <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -236,6 +261,7 @@
 
     <hr>
 
+    <!-- 7. PENUTUP -->
     <section class="section font-cardo" style="padding-bottom: 80px;">
         <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
             Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -244,6 +270,7 @@
         <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
     </section>
 
+    <!-- --- JAVASCRIPT NAMA TAMU OTOMATIS --- -->
     <script>
         function getGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
