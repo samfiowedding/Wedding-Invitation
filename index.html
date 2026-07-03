@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
+    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -50,7 +51,6 @@
             flex-direction: column;
             justify-content: space-between; 
             align-items: center;
-            /* REVISI: Diubah menjadi center top agar wajah otomatis naik ke atas & tidak tertutup teks */
             background: linear-gradient(rgba(44, 62, 80, 0.35), rgba(44, 62, 80, 0.45)), url('bg-utama.jpg.jpg') no-repeat center top/cover;
             color: white;
             padding: 40px 20px;
@@ -71,7 +71,6 @@
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
-        /* REVISI: Kotak info tamu diubah menjadi kaca transparan tipis estetik agar muka tidak terblokir wall solid */
         .cover-card {
             margin-bottom: 65px; 
             background: rgba(255, 255, 255, 0.15); 
@@ -269,7 +268,6 @@
         .comment-name { font-weight: bold; margin-bottom: 5px; font-size: 1.05rem; color: #d4af37; }
         .comment-text { font-size: 0.95rem; color: #eee; line-height: 1.5; }
 
-        /* REVISI TOTAL: Kotak Hadiah Premium Gelap Transparan Sesuai Gambar image_cd8b83.png */
         .gift-box {
             background-color: rgba(44, 62, 80, 0.85); 
             border: 2px solid #ffffff; 
@@ -351,16 +349,19 @@
 </head>
 <body>
 
+    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
+    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
+    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
@@ -385,8 +386,10 @@
         </div>
     </section>
 
+    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
+        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -398,6 +401,7 @@
 
         <hr>
 
+        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -411,6 +415,7 @@
 
         <hr>
 
+        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -424,6 +429,7 @@
 
         <hr>
 
+        <!-- ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             <div class="kolase-container">
                 <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
@@ -455,6 +461,7 @@
 
         <hr>
 
+        <!-- FORM RSVP -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">RSVP</h2>
@@ -490,6 +497,7 @@
 
         <hr>
 
+        <!-- WEDDING GIFT -->
         <section class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -512,6 +520,7 @@
 
         <hr>
 
+        <!-- WISHES & PRAYERS -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">Wishes<br>& Prayers</h2>
@@ -533,16 +542,14 @@
                 </form>
 
                 <div class="comments-list" id="commentsList">
-                    <div class="comment-item fade-in-element visible">
-                        <div class="comment-name">Feilita & Roy</div>
-                        <div class="comment-text">Happy wedding Samuel dan Fiorentia!! Bahagia dan sehat selalu sampai kakek nenek yaa 🤍🤍 God bless youu!</div>
-                    </div>
+                    <!-- Komentar akan muncul di sini setelah disubmit -->
                 </div>
             </div>
         </section>
 
         <hr>
 
+        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -552,6 +559,7 @@
         </section>
     </div>
 
+    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -605,7 +613,6 @@
             });
         }
 
-        /* --- FUNGSI SUBMIT RSVP --- */
         function submitRSVP(e) {
             e.preventDefault(); 
             const btnSubmit = document.querySelector('.btn-submit');
@@ -632,7 +639,6 @@
                 });
         }
 
-        /* --- FUNGSI SUBMIT WISHES & PRAYERS --- */
         function submitWish(e) {
             e.preventDefault();
             const btnSubmit = document.getElementById('btnWishSubmit');
