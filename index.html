@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
         /* --- ATURAN DESAIN TEMA BIRU DENIM LUXURY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
+        
+        body { 
             font-family: 'Cardo', serif; 
             background-color: #f4f6f8; 
             color: #2c3e50; 
             text-align: center; 
             line-height: 1.8;
-            height: 100%; /* Mengunci tinggi awal persis 1 layar */
-            overflow: hidden; /* Mengunci scroll bar */
+            /* Mengunci scroll di awal secara ketat */
+            overflow: hidden; 
+            height: 100vh; 
         }
         
         .font-brightwall {
@@ -39,7 +40,7 @@
             font-family: 'Cardo', serif;
         }
 
-        /* --- SCREEN COVER UTAMA (FULL SCREEN OVERLAY) --- */
+        /* --- SCREEN COVER UTAMA (TIRAI PENGUNCI) --- */
         .hero-cover {
             position: fixed;
             top: 0;
@@ -54,10 +55,10 @@
             color: white;
             padding: 50px 20px 40px 20px;
             z-index: 1000;
-            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1); 
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        /* Kelas CSS khusus saat undangan dibuka */
+        /* Saat tombol diklik, cover ditarik ke atas */
         .hero-cover.opened {
             transform: translateY(-100vh);
         }
@@ -71,15 +72,16 @@
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
-        /* --- KONTEN UTAMA (KUNCI MUTLAK: DIHAPUS FISIKNYA DI AWAL AGAR TIDAK BISA DI-SCROLL) --- */
+        /* --- KONTEN UTAMA --- 
+           Dibuat "display: none" agar tidak memakan ruang sama sekali sebelum tombol diklik 
+        */
         #main-content {
-            display: none; /* Fisik konten 100% hilang sebelum tombol diklik */
+            display: none; 
             opacity: 0;
             transition: opacity 1.5s ease;
             padding-top: 20px;
         }
         #main-content.show {
-            display: block; /* Muncul kembali setelah tombol diklik */
             opacity: 1;
         }
 
@@ -240,14 +242,12 @@
         </svg>
     </div>
 
-    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
-            <img class="logo-inisial" src="logoSF.png" alt="SF Logo">
+            <img class="logo-inisial" src="logoSF1.png" alt="SF Logo">
         </div>
         
-        <!-- Posisi Nama Dinaikkan -->
         <div style="margin-top: -30px;">
             <h1 class="font-brightwall" style="font-size: 3.5rem;">
                 Samuel <br>
@@ -262,12 +262,10 @@
                 <p class="font-cardo" style="font-size: 0.9rem; opacity: 0.9;">Dear:</p>
                 <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.35rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
             </div>
-            <!-- TOMBOL DIKUNCI MENJADI OPEN INVITATION -->
             <button class="btn" style="padding: 10px 25px; font-size: 0.9rem; margin-top: 15px; width: 100%; font-weight: bold;" onclick="openInvitation()">Open Invitation</button>
         </div>
     </section>
 
-    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
         <section class="section fade-in-element">
@@ -369,7 +367,6 @@
         </section>
     </div>
 
-    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -377,25 +374,30 @@
         const coverScreen = document.getElementById("coverScreen");
         const mainContent = document.getElementById("main-content");
 
+        // FUNGSI MEMBUKA UNDANGAN
         function openInvitation() {
-            // 1. Munculkan kembali fisik konten utama
-            mainContent.classList.add("show");
+            // 1. Geser cover ke atas (Efek Tirai)
+            coverScreen.classList.add("opened");
             
-            // 2. Buka kunci tinggi halaman dan scroll bar
-            document.documentElement.style.height = "auto";
-            document.documentElement.style.overflow = "auto";
-            document.body.style.height = "auto";
+            // 2. Munculkan struktur HTML bagian bawah
+            mainContent.style.display = "block";
+            
+            // 3. Tambahkan jeda waktu agar transisi opacity terlihat halus
+            setTimeout(() => {
+                mainContent.classList.add("show");
+            }, 100);
+            
+            // 4. Buka kunci scroll
             document.body.style.overflow = "auto";
             document.body.style.overflowX = "hidden";
+            document.body.style.height = "auto";
 
-            // 3. Geser layar cover ke atas (Efek Tirai)
-            coverScreen.classList.add("opened");
-
-            // 4. Putar musik
+            // 5. Mainkan musik
             audio.play().then(() => {
                 musicBtn.style.display = "flex";
-            }).catch(err => console.log("Audio terblokir browser"));
+            }).catch(err => console.log("Audio play di-block browser sementara"));
 
+            // 6. Picu animasi elemen awal
             setTimeout(handleScrollAnimation, 300);
         }
 
@@ -438,6 +440,9 @@
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
             getGuestName();
+            
+            // Jaga-jaga: pastikan scroll selalu ada di paling atas ketika halaman baru dimuat
+            window.scrollTo(0, 0); 
         };
     </script>
 
