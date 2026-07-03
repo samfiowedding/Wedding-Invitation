@@ -49,7 +49,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Menjaga jarak maksimal antara atas dan bawah */
+            justify-content: space-between; 
             align-items: center;
             background: linear-gradient(rgba(44, 62, 80, 0.35), rgba(44, 62, 80, 0.45)), url('bg-utama.jpg.jpg') no-repeat center top/cover;
             color: white;
@@ -67,7 +67,7 @@
             flex-direction: column;
             align-items: center;
             gap: 5px;
-            margin-top: 8vh; /* REVISI: Agak diturunkan sedikit dari batas atas layar */
+            margin-top: 8vh; 
         }
 
         .logo-inisial {
@@ -82,7 +82,7 @@
         .cover-card {
             background: rgba(255, 255, 255, 0.15); 
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 18px 20px 22px 20px; /* Padding disesuaikan agar lebih ramping */
+            padding: 18px 20px 22px 20px; 
             border-radius: 12px; 
             width: 100%; 
             max-width: 320px; 
@@ -358,7 +358,7 @@
     <!-- 1. LAYAR COVER PENGUNCI (LAYOUT BARU) -->
     <section class="hero-cover" id="coverScreen">
         
-        <!-- Grup Atas: Judul merapat ke atas & Tanggal Dikeluarkan dari Kotak -->
+        <!-- Grup Atas -->
         <div class="hero-top-group">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF1.png" alt="SF Logo">
@@ -367,13 +367,10 @@
                 <span style="font-size: 2rem; display: block; margin: 2px 0;">&</span> 
                 Fiorentia
             </h1>
-            <!-- REVISI: Tanggal dipindah ke sini, tepat di bawah Fiorentia -->
             <p class="font-cardo" style="margin-top: 15px; font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
         </div>
         
-        <!-- Karena menggunakan justify-content: space-between, bagian tengah di sini otomatis akan kosong bolong -->
-        
-        <!-- Grup Bawah: Kotak kaca HANYA berisi Dear & Tombol Open -->
+        <!-- Grup Bawah -->
         <div class="cover-card">
             <p class="font-cardo" style="font-size: 0.95rem; opacity: 0.9;">Dear:</p>
             <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.45rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
@@ -504,8 +501,6 @@
                     
                     <button type="submit" class="btn-submit">SUBMIT</button>
                 </form>
-
-                <!-- REVISI: Teks animasi scroll dihapus -->
             </div>
         </section>
 
@@ -656,8 +651,9 @@
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
             } else if (pax && pax.toLowerCase() === 'keluarga') {
-                rsvpGuestGroup.style.display = 'none';
-                rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>1 Keluarga</option>';
+                // REVISI: Keluarga ditampilkan dengan pilihan terkunci
+                rsvpGuestGroup.style.display = 'block';
+                rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>Family</option>';
             } else if (pax && parseInt(pax) > 1) {
                 let maxPax = parseInt(pax);
                 let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
