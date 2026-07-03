@@ -17,7 +17,7 @@
             color: #2c3e50; 
             text-align: center; 
             line-height: 1.8;
-            overflow-x: hidden; 
+            overflow: hidden; /* Dikunci agar tidak bisa di-scroll sebelum klik Open Invitation */
         }
         
         .font-brightwall {
@@ -38,17 +38,27 @@
             font-family: 'Cardo', serif;
         }
 
-        /* --- COVER UTAMA DENGAN SUSUNAN PRESISI --- */
+        /* --- SCREEN COVER UTAMA (FULL SCREEN OVERLAY) --- */
         .hero-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-around; 
+            justify-content: space-between; 
             align-items: center;
             background: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.5)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
             color: white;
-            padding: 30px 20px;
-            position: relative;
+            padding: 50px 20px 40px 20px;
+            z-index: 1000;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1); /* Efek transisi tirai geser ke atas yang mewah */
+        }
+
+        /* Kelas CSS khusus saat undangan dibuka */
+        .hero-cover.opened {
+            transform: translateY(-100vh);
         }
 
         /* Perbaikan Tampilan logoSF.png */
@@ -59,6 +69,18 @@
             margin: 5px auto;
             display: block;
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
+        }
+
+        /* --- KONTEN UTAMA (TERSEMBUNYI DI AWAL) --- */
+        #main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease;
+            padding-top: 20px;
+        }
+        #main-content.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         .section {
@@ -122,7 +144,6 @@
             transform: translateY(-2px);
         }
 
-        /* Pembatas Halaman Aksen Emas Lembut */
         hr {
             border: 0;
             border-top: 1px solid #d4af37;
@@ -131,7 +152,6 @@
             opacity: 0.6;
         }
 
-        /* Kotak Hadiah Premium */
         .gift-box {
             background-color: #ffffff;
             border: 1px solid #d1e2f2;
@@ -170,19 +190,9 @@
         .btn-copy:hover { transform: scale(1.1); }
         .btn-copy svg { width: 22px; height: 22px; fill: #3a536b; }
 
-        /* --- PENGATURAN STRUKTUR TEKS MEMPELAI --- */
-        .nama-lengkap {
-            font-size: 2rem; 
-            margin: 10px 0; 
-            line-height: 1.3;
-        }
-        .ortu-lengkap {
-            font-size: 1rem; 
-            color: #666; 
-            line-height: 1.5;
-        }
+        .nama-lengkap { font-size: 2rem; margin: 10px 0; line-height: 1.3; }
+        .ortu-lengkap { font-size: 1rem; color: #666; line-height: 1.5; }
 
-        /* --- TOMBOL KONTROL MUSIK POJOK LAYAR --- */
         .music-control {
             position: fixed;
             bottom: 25px;
@@ -203,7 +213,7 @@
         }
         .music-control svg { width: 22px; height: 22px; fill: white; }
         
-        /* --- EFEK ANIMASI MUNCUL PAS DI-SCROLL --- */
+        /* --- EFEK ANIMASI MUNCUL HALUS PAS DI-SCROLL --- */
         .fade-in-element {
             opacity: 0;
             transform: translateY(40px);
@@ -221,47 +231,51 @@
 </head>
 <body>
 
-    <!-- PEMUTAR MUSIK OTOMATIS (MENGGUNAKAN LAGU PADA REPOSITORI GITHUB ANDA) -->
+    <!-- PEMUTAR MUSIK SPECIAL KARYA ANDA -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK MANDIRI -->
+    <!-- TOMBOL KONTROL MUSIK POJOK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
-    <!-- 1. COVER UTAMA -->
-    <section class="hero-cover">
-        <div style="z-index: 2;">
+    <!-- 1. LAYAR COVER PENGUNCI (FULL SCREEN OVERLAY) -->
+    <section class="hero-cover" id="coverScreen">
+        <!-- Atasan Cover (Dinaikkan sedikit lagi agar tidak menutupi wajah) -->
+        <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF.png" alt="SF Logo">
         </div>
         
-        <div style="z-index: 2; margin: 20px 0;">
+        <!-- Tengah Cover: Nama Samuel & Fiorentia (Ikut naik demi estetika wajah) -->
+        <div style="margin-top: -30px;">
             <h1 class="font-brightwall" style="font-size: 3.5rem;">
                 Samuel <br>
-                <span style="font-size: 2.3rem; display: block; margin: 5px 0;">&</span> 
+                <span style="font-size: 2.3rem; display: block; margin: 3px 0;">&</span> 
                 Fiorentia
             </h1>
         </div>
         
-        <div style="z-index: 2; background: rgba(44, 62, 80, 0.55); padding: 20px; border-radius: 12px; width: 100%; max-width: 320px; backdrop-filter: blur(4px); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+        <!-- Bawahan Cover -->
+        <div style="margin-bottom: 10px; background: rgba(44, 62, 80, 0.55); padding: 20px; border-radius: 12px; width: 100%; max-width: 320px; backdrop-filter: blur(4px); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
             <p class="font-cardo" style="font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
-            <div style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px;">
+            <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 8px;">
                 <p class="font-cardo" style="font-size: 0.9rem; opacity: 0.9;">Dear:</p>
                 <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.35rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
             </div>
-            <button class="btn" style="padding: 8px 25px; font-size: 0.85rem; margin-top: 12px; width: 100%;" onclick="startInvitation()">Buka Undangan</button>
+            <!-- REVISI: Tombol interaktif diubah menjadi Open Invitation -->
+            <button class="btn" style="padding: 10px 25px; font-size: 0.9rem; margin-top: 15px; width: 100%; font-weight: bold;" onclick="openInvitation()">Open Invitation</button>
         </div>
     </section>
 
-    <!-- Halaman Utama Utama -->
+    <!-- 2. HALAMAN UTAMA ISI UNDANGAN (TERKUNCI DI AWAL) -->
     <div id="main-content">
 
-        <!-- 2. AYAT ALKITAB -->
+        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -273,7 +287,7 @@
 
         <hr>
 
-        <!-- 3. THE GROOM -->
+        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -287,7 +301,7 @@
 
         <hr>
 
-        <!-- 4. THE BRIDE -->
+        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -301,7 +315,7 @@
 
         <hr>
 
-        <!-- 5. ACARA & KOLASE FOTO -->
+        <!-- ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             <div class="kolase-container">
                 <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
@@ -333,7 +347,7 @@
 
         <hr>
 
-        <!-- 6. WEDDING GIFT -->
+        <!-- WEDDING GIFT -->
         <section class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -356,7 +370,7 @@
 
         <hr>
 
-        <!-- 7. PENUTUP -->
+        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -366,18 +380,33 @@
         </section>
     </div>
 
-    <!-- --- JAVASCRIPT --- -->
+    <!-- --- JAVASCRIPT SISTEM KUNCI & BUKA TIRAI --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
         const musicIcon = document.getElementById("music-icon");
+        const coverScreen = document.getElementById("coverScreen");
+        const mainContent = document.getElementById("main-content");
 
-        function startInvitation() {
+        // Fungsi Spesial Membuka Tirai Undangan & Mengaktifkan Musik
+        function openInvitation() {
+            // 1. Geser cover ke atas (Efek Tirai Sinematik)
+            coverScreen.classList.add("opened");
+            
+            // 2. Munculkan konten utama di latar belakang secara smooth
+            mainContent.classList.add("show");
+            
+            // 3. Buka kunci scroll halaman website
+            document.body.style.overflow = "auto";
+            document.body.style.overflowX = "hidden";
+
+            // 4. Mainkan musik laguwedding.mp3 otomatis
             audio.play().then(() => {
                 musicBtn.style.display = "flex";
-            }).catch(err => console.log("Audio play blocked"));
-            
-            window.scrollBy({ top: 320, behavior: 'smooth' });
+            }).catch(err => console.log("Audio otomatis tertahan sistem privasi browser"));
+
+            // 5. Pemicu animasi elemen pertama agar langsung muncul
+            setTimeout(handleScrollAnimation, 300);
         }
 
         function toggleMusic() {
@@ -405,6 +434,7 @@
             });
         }
 
+        // Kontrol Animasi Muncul Lembut Saat Di-scroll
         const fadeElements = document.querySelectorAll('.fade-in-element');
         function handleScrollAnimation() {
             fadeElements.forEach(el => {
@@ -419,7 +449,6 @@
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
             getGuestName();
-            handleScrollAnimation();
         };
     </script>
 
