@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Cardo & Playfair Display dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -29,7 +28,7 @@
 
         .hero-cover .font-brightwall {
             color: #d1e2f2; 
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.6);
             line-height: 1.2; 
         }
         
@@ -42,11 +41,12 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between; /* Menyebar konten agar vertikal tidak menumpuk di tengah wajah */
             align-items: center;
-            background: linear-gradient(rgba(44, 62, 80, 0.65), rgba(44, 62, 80, 0.65)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
+            /* Lapisan diperhalus agar foto background lebih jelas terlihat */
+            background: linear-gradient(rgba(44, 62, 80, 0.45), rgba(44, 62, 80, 0.55)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .section {
@@ -66,6 +66,30 @@
             display: block;
         }
 
+        /* --- SISTEM STRUKTUR KOLASE GAMBAR (GRID) --- */
+        .kolase-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Membagi jadi 2 kolom sejajar */
+            gap: 12px;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 0 10px;
+        }
+        .kolase-item {
+            background-width: 100%;
+            border: 4px solid white;
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1; /* Membuat frame foto menjadi kotak presisi */
+        }
+        .kolase-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .btn {
             display: inline-block;
             padding: 12px 40px;
@@ -81,34 +105,6 @@
         }
         .btn:hover { background-color: #2c3e50; }
 
-        /* --- SLIDESHOW ACARA --- */
-        .slideshow-container {
-            max-width: 450px;
-            position: relative;
-            margin: 30px auto;
-            border: 6px solid white;
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .mySlides {
-            display: none;
-        }
-        .mySlides img {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            display: block;
-        }
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-        @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-
         hr {
             border: 0;
             border-top: 1px solid #d1e2f2;
@@ -116,39 +112,54 @@
             margin: 40px auto;
         }
 
+        /* Kotak rekening bank yang bisa di-copas dengan mudah */
         .gift-box {
             background-color: #eef3f7;
             border: 1px dashed #3a536b;
-            padding: 25px;
+            padding: 20px 30px;
             border-radius: 8px;
             display: inline-block;
-            min-width: 290px;
             margin-top: 20px;
+        }
+        .norek-salin {
+            font-weight: bold; 
+            font-size: 1.3rem; 
+            letter-spacing: 1.5px; 
+            color: #2c3e50;
+            user-select: all; /* Memudahkan tamu untuk langsung blok & copy nomor ketika di-klik/tekan lama */
+            background: #ffffff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            border: 1px solid #d1e2f2;
+            display: inline-block;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. COVER UTAMA (NAMA BERSUSUN & NAMA TAMU OTOMATIS) -->
     <section class="hero-cover">
-        <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); margin-bottom: 15px;">wedding invitation</p>
+        <div style="margin-top: 20px;">
+            <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">wedding invitation</p>
+        </div>
         
-        <!-- NAMA SUSUN KE BAWAH -->
-        <h1 class="font-brightwall" style="font-size: 3.8rem;">
-            Samuel <br>
-            <span style="font-size: 2.5rem; display: block; margin: 5px 0;">&</span> 
-            Fiorentia
-        </h1>
+        <div>
+            <h1 class="font-brightwall" style="font-size: 3.8rem;">
+                Samuel <br>
+                <span style="font-size: 2.5rem; display: block; margin: 2px 0;">&</span> 
+                Fiorentia
+            </h1>
+        </div>
         
-        <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); margin-top: 20px;">15 Agustus 2026</p>
-        
-        <div style="margin-top: 50px;">
-            <p class="font-cardo" style="font-size: 1.1rem; opacity: 0.9; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">Dear:</p>
-            <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.6rem; margin-top: 5px; font-weight: normal; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">Nama Tamu</h3>
+        <div style="margin-bottom: 20px; background: rgba(44, 62, 80, 0.4); padding: 20px; border-radius: 10px; width: 100%; max-width: 320px; backdrop-filter: blur(2px);">
+            <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold;">15 Agustus 2026</p>
+            <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
+                <p class="font-cardo" style="font-size: 0.95rem; opacity: 0.9;">Dear:</p>
+                <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.4rem; margin-top: 2px; font-weight: normal;">Nama Tamu</h3>
+            </div>
         </div>
     </section>
 
-    <!-- 2. AYAT ALKITAB -->
     <section class="section">
         <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
         <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -160,44 +171,38 @@
 
     <hr>
 
-    <!-- 3. THE GROOM -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
         <img class="foto-prewed" src="thegroom.png" alt="Samuel">
-        <h2 class="font-brightwall" style="font-size: 2.5rem; margin: 10px 0;">Samuel Widarto C.,S.Ak.</h2>
-        <p class="font-cardo" style="color: #555; font-size: 0.95rem;">Son of (†) Mr. Pilemon Chandra & Mrs. Liauw Kian Ming</p>
+        <h2 class="font-brightwall" style="font-size: 2.3rem; margin: 10px 0; white-space: nowrap;">Samuel Widarto Chandra.,S.Ak.</h2>
+        <p class="font-cardo" style="color: #555; font-size: 0.95rem; white-space: nowrap;">Son of (†) Mr. Pilemon Chandra & Mrs. Liauw Kian Ming</p>
     </section>
 
     <hr>
 
-    <!-- 4. THE BRIDE -->
     <section class="section">
         <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
         <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
-        <h2 class="font-brightwall" style="font-size: 2.5rem; margin: 10px 0;">Fiorentia Tessa W., S.Ak.</h2>
-        <p class="font-cardo" style="color: #555; font-size: 0.95rem;">Daughter of Weldy Eko T. & Mrs. Susanna</p>
+        <h2 class="font-brightwall" style="font-size: 2.3rem; margin: 10px 0; white-space: nowrap;">Fiorentia Tessa Wellyana.,S.Ak.</h2>
+        <p class="font-cardo" style="color: #555; font-size: 0.95rem; white-space: nowrap;">Daughter of Mr. Weldy Eko Tjahjono & Mrs. Susanna</p>
     </section>
 
     <hr>
 
-    <!-- 5. ACARA & SLIDESHOW PRE-WEDDING -->
     <section class="section" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
         
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="prewed2.jpg.jpg">
-            </div>
-            <div class="mySlides fade">
-                <img src="prewed3.jpg.jpg">
-            </div>
-            <div class="mySlides fade">
-                <img src="prewed4.jpg.jpg">
-            </div>
+        <div class="kolase-container">
+            <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
+            <div class="kolase-item"><img src="prewed2.jpg.jpg"></div>
+            <div class="kolase-item"><img src="prewed3.jpg.jpg"></div>
+            <div class="kolase-item"><img src="prewed4.jpg.jpg"></div>
+            <div class="kolase-item"><img src="prewed5.jpg.jpg"></div>
+            <div class="kolase-item"><img src="prewed6.jpg.jpg"></div>
         </div>
 
         <div class="font-cardo" style="margin-top: 40px; color: #2c3e50;">
             <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
-            <p>Saturday, August 15th 2026</p>
+            <p style="font-weight: bold;">Saturday, August 15th 2026</p>
             <p>at 11.00 - 12.00 WIB</p>
             <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
@@ -205,19 +210,17 @@
             <div style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
 
             <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
-            <p>Saturday, August 15th 2026</p>
+            <p style="font-weight: bold;">Saturday, August 15th 2026</p>
             <p>at 12.00 - 13.30 WIB</p>
             <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
 
-            <!-- TAUTAN GOOGLE MAPS PENDEK RESMI -->
             <a href="https://maps.app.goo.gl/ecysGogaRWGykVAC8" target="_blank" class="btn">Buka Peta Lokasi</a>
         </div>
     </section>
 
     <hr>
 
-    <!-- 6. WEDDING GIFT -->
     <section class="section font-cardo">
         <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
         <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -225,39 +228,23 @@
         </p>
         
         <div class="gift-box">
-            <p style="font-weight: bold; font-size: 1.2rem; letter-spacing: 1px; color: #2c3e50;">BCA 0881-484-802</p>
-            <p style="font-size: 0.95rem; color: #555; margin-top: 5px;">a.n. Samuel Widarto Chandra</p>
+            <span class="norek-salin">0886248282</span>
+            <p style="font-size: 1.1rem; font-weight: bold; color: #2c3e50; margin-top: 5px;">Bank BCA</p>
+            <p style="font-size: 0.95rem; color: #555;">a.n. Fiorentia Tessa Wellyana</p>
         </div>
     </section>
 
     <hr>
 
-    <!-- 7. PENUTUP -->
     <section class="section font-cardo" style="padding-bottom: 80px;">
         <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
-            "Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given."
+            Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
         </p>
         <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
         <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
     </section>
 
-    <!-- --- JAVASCRIPT GABUNGAN (SLIDESHOW & NAMA TAMU OTOMATIS) --- -->
     <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex-1].style.display = "block";  
-            setTimeout(showSlides, 3000); 
-        }
-
         function getGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
