@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -111,27 +110,27 @@
             display: block;
         }
 
-        /* --- GRID PORTRAT KOLASE FOTO 3:4 --- */
+        /* --- MASONRY GRID UNTUK OUR GALLERY (FOTO DINAMIS) --- */
         .kolase-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px;
-            max-width: 500px;
-            margin: 30px auto;
+            column-count: 2; 
+            column-gap: 15px; 
+            max-width: 550px;
+            margin: 10px auto 40px auto;
             padding: 0 10px;
         }
         .kolase-item {
             width: 100%;
+            margin-bottom: 15px; 
+            break-inside: avoid; 
             border: 4px solid white;
             box-shadow: 0 8px 20px rgba(44, 62, 80, 0.12);
             border-radius: 6px;
             overflow: hidden;
-            aspect-ratio: 3 / 4; 
+            display: inline-block;
         }
         .kolase-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto; 
             display: block;
         }
 
@@ -229,6 +228,31 @@
         }
         .btn-submit:hover { background: white; }
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* --- ANIMASI PANAH SCROLL --- */
+        .scroll-down-hint {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        .scroll-down-hint p {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .bounce-arrow {
+            width: 28px;
+            height: 28px;
+            fill: #d4af37; 
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
 
         .btn-post {
             width: 100%;
@@ -349,19 +373,16 @@
 </head>
 <body>
 
-    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
-    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
@@ -386,10 +407,8 @@
         </div>
     </section>
 
-    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
-        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -401,7 +420,6 @@
 
         <hr>
 
-        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -415,7 +433,6 @@
 
         <hr>
 
-        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -429,18 +446,27 @@
 
         <hr>
 
-        <!-- ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
-            <div class="kolase-container">
-                <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
-                <div class="kolase-item"><img src="prewed2.jpg.jpg"></div>
-                <div class="kolase-item"><img src="prewed3.jpg.jpg"></div>
-                <div class="kolase-item"><img src="prewed4.jpg.jpg"></div>
-                <div class="kolase-item"><img src="prewed5.jpg.jpg"></div>
-                <div class="kolase-item"><img src="prewed6.jpg.jpg"></div>
+            
+            <div style="margin-bottom: 30px;">
+                <h2 class="font-brightwall" style="font-size: 3rem; color: #3a536b; line-height: 1;">Our Gallery</h2>
+                <p class="font-cardo" style="font-size: 1rem; color: #7f8c8d; font-style: italic; margin-top: 5px;">Moments of love we captured together.</p>
             </div>
 
-            <div class="font-cardo" style="margin-top: 40px; color: #2c3e50;">
+            <div class="kolase-container">
+                <div class="kolase-item"><img src="pw1.jpg" alt="Prewedding 1"></div>
+                <div class="kolase-item"><img src="pw2.jpg" alt="Prewedding 2"></div>
+                <div class="kolase-item"><img src="pw3.jpg" alt="Prewedding 3"></div>
+                <div class="kolase-item"><img src="pw4.jpg" alt="Prewedding 4"></div>
+                <div class="kolase-item"><img src="pw5.jpg" alt="Prewedding 5"></div>
+                <div class="kolase-item"><img src="pw6.jpg" alt="Prewedding 6"></div>
+                <div class="kolase-item"><img src="pw7.jpg" alt="Prewedding 7"></div>
+                <div class="kolase-item"><img src="pw8.jpg" alt="Prewedding 8"></div>
+                <div class="kolase-item"><img src="pw9.jpg" alt="Prewedding 9"></div>
+                <div class="kolase-item"><img src="pw10.jpg" alt="Prewedding 10"></div>
+            </div>
+
+            <div class="font-cardo" style="margin-top: 50px; color: #2c3e50;">
                 <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
                 <p style="font-weight: bold;">Saturday, August 15th 2026</p>
                 <p>at 11.00 - 12.00 WIB</p>
@@ -461,7 +487,6 @@
 
         <hr>
 
-        <!-- FORM RSVP -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">RSVP</h2>
@@ -473,7 +498,6 @@
                         <input type="text" id="rsvpName" class="form-control" placeholder="..." required>
                     </div>
                     
-                    <!-- REVISI: Pembungkus kolom Number of Guests diberi ID rsvpGuestGroup agar bisa diatur dinamis via JS -->
                     <div class="form-group" id="rsvpGuestGroup">
                         <label>Number of Guest(s) <span style="color: #e74c3c;">*</span></label>
                         <select id="rsvpGuest" class="form-control" required>
@@ -493,13 +517,20 @@
                     
                     <button type="submit" class="btn-submit">SUBMIT</button>
                 </form>
+
+                <div class="scroll-down-hint">
+                    <p>Please scroll down for Wedding Gift</p>
+                    <svg class="bounce-arrow" viewBox="0 0 24 24">
+                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                </div>
+
             </div>
         </section>
 
         <hr>
 
-        <!-- WEDDING GIFT -->
-        <section class="section font-cardo fade-in-element">
+        <section id="wedding-gift-section" class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
                 Your presence is the greatest gift of all. However, if you are unable to attend and would like to send us your wishes in the form of a gift, please use the bank account details below:
@@ -521,7 +552,6 @@
 
         <hr>
 
-        <!-- WISHES & PRAYERS -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">Wishes<br>& Prayers</h2>
@@ -543,14 +573,12 @@
                 </form>
 
                 <div class="comments-list" id="commentsList">
-                    <!-- Komentar dummy sudah dihapus, kotak akan kosong saat awal -->
                 </div>
             </div>
         </section>
 
         <hr>
 
-        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -560,13 +588,26 @@
         </section>
     </div>
 
-    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
         const musicIcon = document.getElementById("music-icon");
         const coverScreen = document.getElementById("coverScreen");
         const mainContent = document.getElementById("main-content");
+
+        let isMusicPlaying = false;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                isMusicPlaying = !audio.paused; 
+                audio.pause();
+                musicIcon.innerHTML = '<path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v4.61l2 2z"/>';
+            } else {
+                if (isMusicPlaying) {
+                    audio.play();
+                    musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
+                }
+            }
+        });
 
         function openInvitation() {
             coverScreen.classList.add("opened");
@@ -582,7 +623,7 @@
 
             audio.play().then(() => {
                 musicBtn.style.display = "flex";
-            }).catch(err => console.log("Audio play di-block browser sementara"));
+            }).catch(err => console.log("Audio otomatis tertahan browser"));
 
             setTimeout(handleScrollAnimation, 300);
         }
@@ -597,11 +638,9 @@
             }
         }
 
-        /* --- REVISI: Fungsi getGuestName diubah menjadi getGuestInfo untuk membaca limit RSVP Dinamis --- */
         function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // 1. Ambil Nama Tamu (Parameter ?to=...)
             const guestName = urlParams.get('to');
             if (guestName) {
                 const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
@@ -610,21 +649,17 @@
                 document.getElementById("wishName").value = decodedName;
             }
 
-            // 2. Ambil Settingan Pax Dinamis (Parameter &pax=...)
             const pax = urlParams.get('pax');
             const rsvpGuestSelect = document.getElementById("rsvpGuest");
             const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
 
             if (pax === '1') {
-                // Jika cuma 1 orang, sembunyikan dropdown dan pasang nilai mati ke "1"
-                rsvpGuestGroup.style.display = 'none';
+                rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
             } else if (pax && pax.toLowerCase() === 'keluarga') {
-                // Jika 1 keluarga, sembunyikan dropdown dan pasang nilai mati ke "Keluarga"
                 rsvpGuestGroup.style.display = 'none';
                 rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>1 Keluarga</option>';
             } else if (pax && parseInt(pax) > 1) {
-                // Jika 2 orang atau lebih, buatkan dropdown opsi secara dinamis
                 let maxPax = parseInt(pax);
                 let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
                 for(let i = 1; i <= maxPax; i++) {
@@ -633,7 +668,6 @@
                 rsvpGuestSelect.innerHTML = optionsHTML;
                 rsvpGuestGroup.style.display = 'block';
             } else {
-                // Default jika link dibagikan tanpa kode &pax=... (Standar 2 orang)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = `
                     <option value="0" disabled selected>0</option>
@@ -650,7 +684,6 @@
             });
         }
 
-        /* --- FUNGSI SUBMIT RSVP --- */
         function submitRSVP(e) {
             e.preventDefault(); 
             const btnSubmit = document.querySelector('.btn-submit');
@@ -669,6 +702,11 @@
                     document.getElementById("rsvpForm").reset();
                     btnSubmit.innerHTML = "SUBMIT";
                     btnSubmit.disabled = false;
+                    
+                    // AUTO-SCROLL KE BAGIAN KOTAK HADIAH SETELAH RSVP BERHASIL
+                    setTimeout(() => {
+                        document.getElementById("wedding-gift-section").scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
                 })
                 .catch(error => {
                     alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
@@ -677,7 +715,6 @@
                 });
         }
 
-        /* --- FUNGSI SUBMIT WISHES & PRAYERS --- */
         function submitWish(e) {
             e.preventDefault();
             const btnSubmit = document.getElementById('btnWishSubmit');
@@ -728,7 +765,7 @@
 
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
-            getGuestInfo(); // Memanggil fungsi informasi tamu yang baru
+            getGuestInfo(); 
             window.scrollTo(0, 0); 
         };
     </script>
