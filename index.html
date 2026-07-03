@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
+    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -169,8 +170,17 @@
         .btn-copy:hover { transform: scale(1.1); }
         .btn-copy svg { width: 22px; height: 22px; fill: #3a536b; }
 
-        .nama-lengkap { font-size: 2rem; margin: 10px 0; line-height: 1.3; }
-        .ortu-lengkap { font-size: 1rem; color: #666; line-height: 1.5; }
+        /* --- PENGATURAN STRUKTUR TEKS MEMPELAI --- */
+        .nama-lengkap {
+            font-size: 2rem; 
+            margin: 10px 0; 
+            line-height: 1.3;
+        }
+        .ortu-lengkap {
+            font-size: 1rem; 
+            color: #666; 
+            line-height: 1.5;
+        }
 
         /* --- TOMBOL KONTROL MUSIK POJOK LAYAR --- */
         .music-control {
@@ -211,16 +221,19 @@
 </head>
 <body>
 
+    <!-- PEMUTAR MUSIK OTOMATIS (MENGGUNAKAN LAGU PADA REPOSITORI GITHUB ANDA) -->
     <audio id="wedding-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
+    <!-- TOMBOL KONTROL MUSIK MANDIRI -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
+    <!-- 1. COVER UTAMA -->
     <section class="hero-cover">
         <div style="z-index: 2;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
@@ -245,8 +258,10 @@
         </div>
     </section>
 
+    <!-- Halaman Utama Utama -->
     <div id="main-content">
 
+        <!-- 2. AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -258,24 +273,35 @@
 
         <hr>
 
+        <!-- 3. THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
-            <h2 class="font-brightwall nama-lengkap">Samuel Widarto<br>Chandra.,S.Ak</h2>
-            <p class="font-cardo ortu-lengkap">Son of (†) Mr. Pilemon Chandra<br>& Mrs. Liauw Kian Ming</p>
+            <h2 class="font-brightwall nama-lengkap">
+                Samuel Widarto<br>Chandra.,S.Ak
+            </h2>
+            <p class="font-cardo ortu-lengkap">
+                Son of (†) Mr. Pilemon Chandra<br>& Mrs. Liauw Kian Ming
+            </p>
         </section>
 
         <hr>
 
+        <!-- 4. THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
-            <h2 class="font-brightwall nama-lengkap">Fiorentia Tessa<br>Wellyana.,S.Ak</h2>
-            <p class="font-cardo ortu-lengkap">Daughter of Mr. Weldy Eko Tjahjono<br>& Mrs. Susanna</p>
+            <h2 class="font-brightwall nama-lengkap">
+                Fiorentia Tessa<br>Wellyana.,S.Ak
+            </h2>
+            <p class="font-cardo ortu-lengkap">
+                Daughter of Mr. Weldy Eko Tjahjono<br>& Mrs. Susanna
+            </p>
         </section>
 
         <hr>
 
+        <!-- 5. ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             <div class="kolase-container">
                 <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
@@ -307,6 +333,7 @@
 
         <hr>
 
+        <!-- 6. WEDDING GIFT -->
         <section class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -329,6 +356,7 @@
 
         <hr>
 
+        <!-- 7. PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -338,22 +366,20 @@
         </section>
     </div>
 
+    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
         const musicIcon = document.getElementById("music-icon");
 
-        // Fungsi awal untuk mengaktifkan musik saat tamu membuka undangan
         function startInvitation() {
             audio.play().then(() => {
                 musicBtn.style.display = "flex";
-            }).catch(err => console.log("Izin audio otomatis diblokir browser"));
+            }).catch(err => console.log("Audio play blocked"));
             
-            // Gulir otomatis sedikit ke bawah agar tamu merasakan efek transisi awal
-            window.scrollBy({ top: 300, behavior: 'smooth' });
+            window.scrollBy({ top: 320, behavior: 'smooth' });
         }
 
-        // Fungsi menyalakan dan mematikan musik secara manual
         function toggleMusic() {
             if (audio.paused) {
                 audio.play();
@@ -364,7 +390,6 @@
             }
         }
 
-        // Mengatur Nama Tamu
         function getGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
@@ -373,7 +398,6 @@
             }
         }
 
-        // Salin Rekening
         function copyNorek() {
             const norekText = document.getElementById("norek-bca").innerText;
             navigator.clipboard.writeText(norekText).then(() => {
@@ -381,7 +405,6 @@
             });
         }
 
-        // Logika Deteksi Scroll untuk Efek Elemen Muncul Perlahan
         const fadeElements = document.querySelectorAll('.fade-in-element');
         function handleScrollAnimation() {
             fadeElements.forEach(el => {
@@ -396,7 +419,7 @@
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
             getGuestName();
-            handleScrollAnimation(); // Jalankan sekali di awal untuk memuat elemen teratas
+            handleScrollAnimation();
         };
     </script>
 
