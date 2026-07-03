@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Cardo & Playfair Display dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- ATURAN DESAIN DASAR TEMA BIRU DENIM --- */
+        /* --- ATURAN DESAIN TEMA BIRU DENIM LUXURY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Cardo', serif; 
@@ -29,8 +28,8 @@
         }
 
         .hero-cover .font-brightwall {
-            color: #d1e2f2; 
-            text-shadow: 1px 2px 4px rgba(0,0,0,0.6);
+            color: #ffffff; 
+            text-shadow: 2px 3px 6px rgba(0,0,0,0.5);
             line-height: 1.2; 
         }
         
@@ -38,30 +37,31 @@
             font-family: 'Cardo', serif;
         }
 
-        /* --- BACKGROUND FOTO COVER UTAMA --- */
+        /* --- COVER UTAMA DENGAN SUSUNAN PRESISI --- */
         .hero-cover {
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
+            justify-content: space-around; 
             align-items: center;
-            background: linear-gradient(rgba(44, 62, 80, 0.45), rgba(44, 62, 80, 0.55)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.5)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
+            position: relative;
         }
 
-        /* Pengaturan Gaya untuk Logo Kecil logoSF.png */
+        /* Perbaikan Tampilan logoSF.png */
         .logo-inisial {
-            width: 55px;
-            height: 55px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            margin: 10px auto;
+            margin: 5px auto;
             display: block;
-            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+            filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
         .section {
-            padding: 70px 20px;
+            padding: 80px 20px;
             max-width: 700px;
             margin: 0 auto;
         }
@@ -72,16 +72,16 @@
             height: auto;
             border-radius: 8px; 
             border: 6px solid white; 
-            box-shadow: 0 10px 30px rgba(44, 62, 80, 0.15);
+            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.15);
             margin: 25px auto;
             display: block;
         }
 
-        /* --- SISTEM STRUKTUR KOLASE GAMBAR (GRID PORTRAT 3:4) --- */
+        /* --- GRID PORTRAT KOLASE FOTO 3:4 --- */
         .kolase-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
-            gap: 12px;
+            gap: 15px;
             max-width: 500px;
             margin: 30px auto;
             padding: 0 10px;
@@ -89,7 +89,7 @@
         .kolase-item {
             width: 100%;
             border: 4px solid white;
-            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.1);
+            box-shadow: 0 8px 20px rgba(44, 62, 80, 0.12);
             border-radius: 6px;
             overflow: hidden;
             aspect-ratio: 3 / 4; 
@@ -111,44 +111,50 @@
             margin-top: 20px;
             font-size: 0.95rem;
             letter-spacing: 1px;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
         }
-        .btn:hover { background-color: #2c3e50; }
+        .btn:hover { 
+            background-color: #2c3e50;
+            transform: translateY(-2px);
+        }
 
+        /* Pembatas Halaman Aksen Emas Lembut */
         hr {
             border: 0;
-            border-top: 1px solid #d1e2f2;
-            width: 40%;
-            margin: 40px auto;
+            border-top: 1px solid #d4af37;
+            width: 25%;
+            margin: 50px auto;
+            opacity: 0.6;
         }
 
-        /* Kotak rekening bank ala image_cd8b83.png */
+        /* Kotak Hadiah Premium */
         .gift-box {
-            background-color: #eef3f7;
-            border: 1px dashed #3a536b;
-            padding: 25px 30px;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border: 1px solid #d1e2f2;
+            padding: 30px 25px;
+            border-radius: 12px;
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 25px;
+            box-shadow: 0 10px 25px rgba(44,62,80,0.05);
         }
         .norek-area {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background: #ffffff;
-            padding: 6px 14px;
-            border-radius: 4px;
-            border: 1px solid #d1e2f2;
-            margin-bottom: 8px;
+            gap: 12px;
+            background: #eef3f7;
+            padding: 8px 18px;
+            border-radius: 6px;
+            margin-bottom: 12px;
         }
         .norek-salin {
             font-weight: bold; 
-            font-size: 1.3rem; 
+            font-size: 1.35rem; 
             letter-spacing: 1.5px; 
             color: #2c3e50;
-            user-select: all; 
         }
         .btn-copy {
             background: none;
@@ -158,27 +164,44 @@
             align-items: center;
             padding: 4px;
             border-radius: 4px;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
-        .btn-copy:hover {
-            background-color: #f0f0f0;
-        }
-        .btn-copy svg {
-            width: 20px;
-            height: 20px;
-            fill: #5c768d;
-        }
+        .btn-copy:hover { transform: scale(1.1); }
+        .btn-copy svg { width: 22px; height: 22px; fill: #3a536b; }
 
-        /* --- PENGATURAN STRUKTUR TEKS MEMPELAI --- */
-        .nama-lengkap {
-            font-size: 2rem; 
-            margin: 10px 0; 
-            line-height: 1.3;
+        .nama-lengkap { font-size: 2rem; margin: 10px 0; line-height: 1.3; }
+        .ortu-lengkap { font-size: 1rem; color: #666; line-height: 1.5; }
+
+        /* --- TOMBOL KONTROL MUSIK POJOK LAYAR --- */
+        .music-control {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            background: rgba(58, 83, 107, 0.85);
+            border: 2px solid white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+            transition: 0.3s;
         }
-        .ortu-lengkap {
-            font-size: 1rem; 
-            color: #555; 
-            line-height: 1.5;
+        .music-control svg { width: 22px; height: 22px; fill: white; }
+        
+        /* --- EFEK ANIMASI MUNCUL PAS DI-SCROLL --- */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media(min-width: 480px) {
@@ -188,141 +211,160 @@
 </head>
 <body>
 
-    <!-- 1. COVER UTAMA -->
+    <audio id="wedding-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
+        <svg id="music-icon" viewBox="0 0 24 24">
+            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+    </div>
+
     <section class="hero-cover">
-        <!-- Atasan Cover -->
-        <div style="margin-top: 20px;">
-            <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">wedding invitation</p>
+        <div style="z-index: 2;">
+            <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF.png" alt="SF Logo">
         </div>
         
-        <!-- Tengah Cover -->
-        <div>
-            <h1 class="font-brightwall" style="font-size: 3.8rem;">
+        <div style="z-index: 2; margin: 20px 0;">
+            <h1 class="font-brightwall" style="font-size: 3.5rem;">
                 Samuel <br>
-                <span style="font-size: 2.5rem; display: block; margin: 2px 0;">&</span> 
+                <span style="font-size: 2.3rem; display: block; margin: 5px 0;">&</span> 
                 Fiorentia
             </h1>
         </div>
         
-        <!-- Bawahan Cover -->
-        <div style="margin-bottom: 20px; background: rgba(44, 62, 80, 0.4); padding: 20px; border-radius: 10px; width: 100%; max-width: 320px; backdrop-filter: blur(2px);">
-            <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold;">15 Agustus 2026</p>
-            <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
-                <p class="font-cardo" style="font-size: 0.95rem; opacity: 0.9;">Dear:</p>
-                <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.4rem; margin-top: 2px; font-weight: normal;">Nama Tamu</h3>
+        <div style="z-index: 2; background: rgba(44, 62, 80, 0.55); padding: 20px; border-radius: 12px; width: 100%; max-width: 320px; backdrop-filter: blur(4px); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+            <p class="font-cardo" style="font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
+            <div style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px;">
+                <p class="font-cardo" style="font-size: 0.9rem; opacity: 0.9;">Dear:</p>
+                <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.35rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
             </div>
+            <button class="btn" style="padding: 8px 25px; font-size: 0.85rem; margin-top: 12px; width: 100%;" onclick="startInvitation()">Buka Undangan</button>
         </div>
     </section>
 
-    <!-- 2. AYAT ALKITAB -->
-    <section class="section">
-        <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
-        <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
-            "Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan."
-            <br>
-            <span style="font-weight: bold; font-style: normal; display: block; margin-top: 15px; color: #2c3e50;">Kolose 3:14</span>
-        </p>
-    </section>
+    <div id="main-content">
 
-    <hr>
+        <section class="section fade-in-element">
+            <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
+            <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
+                "Dan di atas semuanya itu: kenakanlah kasih, sebagai pengikat yang mempersatukan dan menyempurnakan."
+                <br>
+                <span style="font-weight: bold; font-style: normal; display: block; margin-top: 15px; color: #2c3e50;">Kolose 3:14</span>
+            </p>
+        </section>
 
-    <!-- 3. THE GROOM (REVISI: STRUKTUR TEKS KEBANtU/TURUN) -->
-    <section class="section">
-        <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
-        <img class="foto-prewed" src="thegroom.png" alt="Samuel">
-        <h2 class="font-brightwall nama-lengkap">
-            Samuel Widarto<br>Chandra.,S.Ak
-        </h2>
-        <p class="font-cardo ortu-lengkap">
-            Son of (†) Mr. Pilemon Chandra<br>& Mrs. Liauw Kian Ming
-        </p>
-    </section>
+        <hr>
 
-    <hr>
+        <section class="section fade-in-element">
+            <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
+            <img class="foto-prewed" src="thegroom.png" alt="Samuel">
+            <h2 class="font-brightwall nama-lengkap">Samuel Widarto<br>Chandra.,S.Ak</h2>
+            <p class="font-cardo ortu-lengkap">Son of (†) Mr. Pilemon Chandra<br>& Mrs. Liauw Kian Ming</p>
+        </section>
 
-    <!-- 4. THE BRIDE (REVISI: STRUKTUR TEKS KEBANTU/TURUN) -->
-    <section class="section">
-        <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
-        <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
-        <h2 class="font-brightwall nama-lengkap">
-            Fiorentia Tessa<br>Wellyana.,S.Ak
-        </h2>
-        <p class="font-cardo ortu-lengkap">
-            Daughter of Mr. Weldy Eko Tjahjono<br>& Mrs. Susanna
-        </p>
-    </section>
+        <hr>
 
-    <hr>
+        <section class="section fade-in-element">
+            <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
+            <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
+            <h2 class="font-brightwall nama-lengkap">Fiorentia Tessa<br>Wellyana.,S.Ak</h2>
+            <p class="font-cardo ortu-lengkap">Daughter of Mr. Weldy Eko Tjahjono<br>& Mrs. Susanna</p>
+        </section>
 
-    <!-- 5. ACARA & KOLASE FOTO -->
-    <section class="section" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
-        
-        <div class="kolase-container">
-            <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
-            <div class="kolase-item"><img src="prewed2.jpg.jpg"></div>
-            <div class="kolase-item"><img src="prewed3.jpg.jpg"></div>
-            <div class="kolase-item"><img src="prewed4.jpg.jpg"></div>
-            <div class="kolase-item"><img src="prewed5.jpg.jpg"></div>
-            <div class="kolase-item"><img src="prewed6.jpg.jpg"></div>
-        </div>
+        <hr>
 
-        <div class="font-cardo" style="margin-top: 40px; color: #2c3e50;">
-            <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
-            <p style="font-weight: bold;">Saturday, August 15th 2026</p>
-            <p>at 11.00 - 12.00 WIB</p>
-            <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
-            <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+        <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
+            <div class="kolase-container">
+                <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
+                <div class="kolase-item"><img src="prewed2.jpg.jpg"></div>
+                <div class="kolase-item"><img src="prewed3.jpg.jpg"></div>
+                <div class="kolase-item"><img src="prewed4.jpg.jpg"></div>
+                <div class="kolase-item"><img src="prewed5.jpg.jpg"></div>
+                <div class="kolase-item"><img src="prewed6.jpg.jpg"></div>
+            </div>
+
+            <div class="font-cardo" style="margin-top: 40px; color: #2c3e50;">
+                <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
+                <p style="font-weight: bold;">Saturday, August 15th 2026</p>
+                <p>at 11.00 - 12.00 WIB</p>
+                <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+                
+                <div style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
+
+                <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
+                <p style="font-weight: bold;">Saturday, August 15th 2026</p>
+                <p>at 12.00 - 13.30 WIB</p>
+                <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+
+                <a href="https://maps.app.goo.gl/ecysGogaRWGykVAC8" target="_blank" class="btn">Buka Peta Lokasi</a>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="section font-cardo fade-in-element">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
+            <p style="font-size: 1rem; color: #555; padding: 0 15px;">
+                Your presence is the greatest gift of all. However, if you are unable to attend and would like to send us your wishes in the form of a gift, please use the bank account details below:
+            </p>
             
-            <div style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
-
-            <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
-            <p style="font-weight: bold;">Saturday, August 15th 2026</p>
-            <p>at 12.00 - 13.30 WIB</p>
-            <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
-            <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
-
-            <a href="https://maps.app.goo.gl/ecysGogaRWGykVAC8" target="_blank" class="btn">Buka Peta Lokasi</a>
-        </div>
-    </section>
-
-    <hr>
-
-    <!-- 6. WEDDING GIFT -->
-    <section class="section font-cardo">
-        <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
-        <p style="font-size: 1rem; color: #555; padding: 0 15px;">
-            Your presence is the greatest gift of all. However, if you are unable to attend and would like to send us your wishes in the form of a gift, please use the bank account details below:
-        </p>
-        
-        <div class="gift-box">
-            <div class="norek-area">
-                <span id="norek-bca" class="norek-salin">0886248282</span>
-                <button class="btn-copy" onclick="copyNorek()" title="Salin Nomor Rekening">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                    </svg>
-                </button>
+            <div class="gift-box">
+                <div class="norek-area">
+                    <span id="norek-bca" class="norek-salin">0886248282</span>
+                    <button class="btn-copy" onclick="copyNorek()" title="Salin Nomor Rekening">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                        </svg>
+                    </button>
+                </div>
+                <p style="font-size: 1.1rem; font-weight: bold; color: #2c3e50;">Bank BCA</p>
+                <p style="font-size: 0.95rem; color: #555;">a.n. Fiorentia Tessa Wellyana</p>
             </div>
-            <p style="font-size: 1.1rem; font-weight: bold; color: #2c3e50;">Bank BCA</p>
-            <p style="font-size: 0.95rem; color: #555;">a.n. Fiorentia Tessa Wellyana</p>
-        </div>
-    </section>
+        </section>
 
-    <hr>
+        <hr>
 
-    <!-- 7. PENUTUP -->
-    <section class="section font-cardo" style="padding-bottom: 80px;">
-        <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
-            Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
-        </p>
-        <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
-        <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
-    </section>
+        <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
+            <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
+                Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
+            </p>
+            <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
+            <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
+        </section>
+    </div>
 
-    <!-- --- JAVASCRIPT --- -->
     <script>
-        // Fungsi Nama Tamu Otomatis
+        const audio = document.getElementById("wedding-music");
+        const musicBtn = document.getElementById("musicBtn");
+        const musicIcon = document.getElementById("music-icon");
+
+        // Fungsi awal untuk mengaktifkan musik saat tamu membuka undangan
+        function startInvitation() {
+            audio.play().then(() => {
+                musicBtn.style.display = "flex";
+            }).catch(err => console.log("Izin audio otomatis diblokir browser"));
+            
+            // Gulir otomatis sedikit ke bawah agar tamu merasakan efek transisi awal
+            window.scrollBy({ top: 300, behavior: 'smooth' });
+        }
+
+        // Fungsi menyalakan dan mematikan musik secara manual
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
+            } else {
+                audio.pause();
+                musicIcon.innerHTML = '<path d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73L19.73 21 21 19.73 4.27 3zM14 7h4V3h-6v4.61l2 2z"/>';
+            }
+        }
+
+        // Mengatur Nama Tamu
         function getGuestName() {
             const urlParams = new URLSearchParams(window.location.search);
             const guestName = urlParams.get('to');
@@ -331,17 +373,31 @@
             }
         }
 
-        // Fungsi Salin Rekening Otomatis
+        // Salin Rekening
         function copyNorek() {
             const norekText = document.getElementById("norek-bca").innerText;
             navigator.clipboard.writeText(norekText).then(() => {
                 alert("Nomor rekening berhasil disalin!");
-            }).catch(err => {
-                console.error("Gagal menyalin text: ", err);
             });
         }
 
-        window.onload = getGuestName;
+        // Logika Deteksi Scroll untuk Efek Elemen Muncul Perlahan
+        const fadeElements = document.querySelectorAll('.fade-in-element');
+        function handleScrollAnimation() {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                if (rect.top <= windowHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.onload = () => {
+            getGuestName();
+            handleScrollAnimation(); // Jalankan sekali di awal untuk memuat elemen teratas
+        };
     </script>
 
 </body>
