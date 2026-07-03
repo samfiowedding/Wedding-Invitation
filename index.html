@@ -39,7 +39,7 @@
             font-family: 'Cardo', serif;
         }
 
-        /* --- SCREEN COVER UTAMA (TIRAI PENGUNCI) --- */
+        /* --- SCREEN COVER UTAMA DENGAN LAYOUT BARU --- */
         .hero-cover {
             position: fixed;
             top: 0;
@@ -48,11 +48,11 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
+            justify-content: space-between; /* Membuat jarak maksimal antara atas dan bawah */
             align-items: center;
             background: linear-gradient(rgba(44, 62, 80, 0.35), rgba(44, 62, 80, 0.45)), url('bg-utama.jpg.jpg') no-repeat center top/cover;
             color: white;
-            padding: 40px 20px;
+            padding: 35px 20px 60px 20px; /* Padding bawah 60px aman untuk navigasi HP */
             z-index: 1000;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -61,17 +61,24 @@
             transform: translateY(-100vh);
         }
 
+        .hero-top-group {
+            /* Mengelompokkan judul di paling atas agar tengahnya kosong */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
         .logo-inisial {
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
-            margin: 5px auto;
+            margin: 0 auto;
             display: block;
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
         .cover-card {
-            margin-bottom: 65px; 
             background: rgba(255, 255, 255, 0.15); 
             border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 20px; 
@@ -80,6 +87,7 @@
             max-width: 320px; 
             backdrop-filter: blur(8px); 
             box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            margin-bottom: 0; 
         }
 
         /* --- KONTEN UTAMA --- */
@@ -110,7 +118,7 @@
             display: block;
         }
 
-        /* --- MASONRY GRID UNTUK OUR GALLERY (FOTO DINAMIS) --- */
+        /* --- MASONRY GRID UNTUK OUR GALLERY --- */
         .kolase-container {
             column-count: 2; 
             column-gap: 15px; 
@@ -230,24 +238,9 @@
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
 
         /* --- ANIMASI PANAH SCROLL --- */
-        .scroll-down-hint {
-            margin-top: 30px;
-            text-align: center;
-            opacity: 0.9;
-        }
-        .scroll-down-hint p {
-            font-size: 0.95rem;
-            color: #ffffff;
-            font-style: italic;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        .bounce-arrow {
-            width: 28px;
-            height: 28px;
-            fill: #d4af37; 
-            animation: bounce 2s infinite;
-        }
+        .scroll-down-hint { margin-top: 30px; text-align: center; opacity: 0.9; }
+        .scroll-down-hint p { font-size: 0.95rem; color: #ffffff; font-style: italic; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .bounce-arrow { width: 28px; height: 28px; fill: #d4af37; animation: bounce 2s infinite; }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
@@ -314,22 +307,8 @@
             margin-bottom: 5px;
             margin-top: 5px;
         }
-        .norek-salin {
-            font-weight: bold; 
-            font-size: 1.6rem; 
-            letter-spacing: 1px; 
-            color: #ffffff;
-        }
-        .btn-copy {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 4px;
-            border-radius: 4px;
-            transition: transform 0.2s;
-        }
+        .norek-salin { font-weight: bold; font-size: 1.6rem; letter-spacing: 1px; color: #ffffff; }
+        .btn-copy { background: none; border: none; cursor: pointer; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: transform 0.2s; }
         .btn-copy:hover { transform: scale(1.1); }
         .btn-copy svg { width: 24px; height: 24px; fill: #ffffff; }
 
@@ -384,15 +363,12 @@
     </div>
 
     <section class="hero-cover" id="coverScreen">
-        <div style="margin-top: 5px;">
+        <div class="hero-top-group">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF1.png" alt="SF Logo">
-        </div>
-        
-        <div style="margin-top: -30px;">
-            <h1 class="font-brightwall" style="font-size: 3.5rem;">
+            <h1 class="font-brightwall" style="font-size: 3.2rem; margin-top: 5px; line-height: 1.1;">
                 Samuel <br>
-                <span style="font-size: 2.3rem; display: block; margin: 3px 0;">&</span> 
+                <span style="font-size: 2rem; display: block; margin: 2px 0;">&</span> 
                 Fiorentia
             </h1>
         </div>
@@ -467,19 +443,24 @@
             </div>
 
             <div class="font-cardo" style="margin-top: 50px; color: #2c3e50;">
-                <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
-                <p style="font-weight: bold;">Saturday, August 15th 2026</p>
-                <p>at 11.00 - 12.00 WIB</p>
-                <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
-                <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
                 
-                <div style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
+                <div id="event-matrimony">
+                    <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
+                    <p style="font-weight: bold;">Saturday, August 15th 2026</p>
+                    <p>at 11.00 - 12.00 WIB</p>
+                    <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+                </div>
+                
+                <div id="event-divider" style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
 
-                <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
-                <p style="font-weight: bold;">Saturday, August 15th 2026</p>
-                <p>at 12.00 - 13.30 WIB</p>
-                <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
-                <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+                <div id="event-reception">
+                    <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
+                    <p style="font-weight: bold;">Saturday, August 15th 2026</p>
+                    <p id="reception-time">at 12.00 - 13.30 WIB</p>
+                    <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Luminor Hotel, Surabaya</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Jl. Raya Jemursari No.206-208, Surabaya</p>
+                </div>
 
                 <a href="https://maps.app.goo.gl/ecysGogaRWGykVAC8" target="_blank" class="btn">Buka Peta Lokasi</a>
             </div>
@@ -641,6 +622,7 @@
         function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
             
+            // 1. Mengisi Nama Tamu
             const guestName = urlParams.get('to');
             if (guestName) {
                 const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
@@ -649,6 +631,24 @@
                 document.getElementById("wishName").value = decodedName;
             }
 
+            // 2. Logika Jenis Acara (Full vs Reception Only)
+            const invType = urlParams.get('type');
+            window.currentInviteTypeLabel = "Holy Matrimony & Reception"; // Default
+
+            if (invType && invType.toLowerCase() === 'reception') {
+                // Sembunyikan Holy Matrimony, ubah jam Reception
+                document.getElementById("event-matrimony").style.display = "none";
+                document.getElementById("event-divider").style.display = "none";
+                document.getElementById("reception-time").innerText = "at 18.00 - 20.30 WIB";
+                window.currentInviteTypeLabel = "Reception Only (18.00)";
+            } else {
+                // Tampilkan semua (kondisi awal)
+                document.getElementById("event-matrimony").style.display = "block";
+                document.getElementById("event-divider").style.display = "block";
+                document.getElementById("reception-time").innerText = "at 12.00 - 13.30 WIB";
+            }
+
+            // 3. Logika Batasan Jumlah Pax (Tetap Sama)
             const pax = urlParams.get('pax');
             const rsvpGuestSelect = document.getElementById("rsvpGuest");
             const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
@@ -692,9 +692,14 @@
 
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzjJAsTfWnkwZmht3iajvirhPIL10wmzP6WeQXo9ZNme26ln9aMKndvphPJXbw0KjhU/exec';
             const formData = new FormData();
+            
+            // Menggabungkan pilihan (Yes/No) dengan Tipe Undangan agar jelas di Excel
+            const attendanceVal = document.querySelector('input[name="attendance"]:checked').value;
+            const finalAttendanceStatus = `${attendanceVal} - [${window.currentInviteTypeLabel}]`;
+
             formData.append('nama', document.getElementById("rsvpName").value);
             formData.append('jumlah', document.getElementById("rsvpGuest").value);
-            formData.append('kehadiran', document.querySelector('input[name="attendance"]:checked').value);
+            formData.append('kehadiran', finalAttendanceStatus);
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
@@ -703,7 +708,6 @@
                     btnSubmit.innerHTML = "SUBMIT";
                     btnSubmit.disabled = false;
                     
-                    // AUTO-SCROLL KE BAGIAN KOTAK HADIAH SETELAH RSVP BERHASIL
                     setTimeout(() => {
                         document.getElementById("wedding-gift-section").scrollIntoView({ behavior: 'smooth' });
                     }, 500);
