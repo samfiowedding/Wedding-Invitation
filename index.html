@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -151,8 +150,8 @@
             opacity: 0.6;
         }
 
-        /* --- DESAIN FORM RSVP LUXURY --- */
-        .rsvp-section {
+        /* --- DESAIN FORM RSVP & WISHES --- */
+        .form-section {
             background: rgba(44, 62, 80, 0.9);
             color: white;
             padding: 50px 25px;
@@ -161,7 +160,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             backdrop-filter: blur(5px);
         }
-        .rsvp-heading {
+        .form-heading {
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
             line-height: 1.1;
@@ -169,7 +168,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .rsvp-p {
+        .form-p {
             font-size: 0.95rem;
             margin-bottom: 30px;
             opacity: 0.9;
@@ -181,8 +180,6 @@
             margin-bottom: 8px;
             font-size: 1rem;
         }
-        .form-group label span { color: #e74c3c; } 
-        
         .form-control {
             width: 100%;
             padding: 12px;
@@ -198,24 +195,9 @@
         .form-control:focus { outline: none; border-color: white; background: rgba(255,255,255,0.1); }
         select.form-control option { color: #2c3e50; } 
 
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
-        .radio-label {
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            cursor: pointer;
-        }
-        .radio-label input[type="radio"] {
-            margin-right: 10px;
-            width: 16px;
-            height: 16px;
-            accent-color: #d4af37; 
-        }
+        .radio-group { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        .radio-label { display: flex; align-items: center; font-size: 0.95rem; cursor: pointer; }
+        .radio-label input[type="radio"] { margin-right: 10px; width: 16px; height: 16px; accent-color: #d4af37; }
 
         .btn-submit {
             width: 100%;
@@ -234,6 +216,46 @@
         }
         .btn-submit:hover { background: white; }
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* Tombol Spesial untuk Post Comment Wishes */
+        .btn-post {
+            width: 100%;
+            padding: 14px;
+            background: #9fa6ab; 
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'Cardo', serif;
+            transition: 0.3s;
+        }
+        .btn-post:hover { background: #b8c0c6; }
+
+        /* Desain List Komentar Buku Tamu */
+        .comments-list {
+            margin-top: 35px;
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .comments-list::-webkit-scrollbar { width: 6px; }
+        .comments-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+        
+        .comment-item {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 15px 18px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-align: left;
+            border-left: 3px solid #d4af37;
+        }
+        .comment-name { font-weight: bold; margin-bottom: 5px; font-size: 1.05rem; color: #d4af37; }
+        .comment-text { font-size: 0.95rem; color: #eee; line-height: 1.5; }
 
         .gift-box {
             background-color: #ffffff;
@@ -254,22 +276,8 @@
             border-radius: 6px;
             margin-bottom: 12px;
         }
-        .norek-salin {
-            font-weight: bold; 
-            font-size: 1.35rem; 
-            letter-spacing: 1.5px; 
-            color: #2c3e50;
-        }
-        .btn-copy {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 4px;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
+        .norek-salin { font-weight: bold; font-size: 1.35rem; letter-spacing: 1.5px; color: #2c3e50; }
+        .btn-copy { background: none; border: none; cursor: pointer; display: flex; align-items: center; padding: 4px; border-radius: 4px; transition: 0.2s; }
         .btn-copy:hover { transform: scale(1.1); }
         .btn-copy svg { width: 22px; height: 22px; fill: #3a536b; }
 
@@ -313,19 +321,16 @@
 </head>
 <body>
 
-    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
-    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         <div style="margin-top: 5px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
@@ -350,10 +355,8 @@
         </div>
     </section>
 
-    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
-        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -365,7 +368,6 @@
 
         <hr>
 
-        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -379,7 +381,6 @@
 
         <hr>
 
-        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -393,7 +394,6 @@
 
         <hr>
 
-        <!-- ACARA & KOLASE FOTO -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             <div class="kolase-container">
                 <div class="kolase-item"><img src="prewed1.jpg.jpg"></div>
@@ -425,20 +425,19 @@
 
         <hr>
 
-        <!-- FORM RSVP (TERHUBUNG KE GOOGLE SHEETS) -->
         <section class="section fade-in-element" style="padding-top: 0;">
-            <div class="rsvp-section">
-                <h2 class="rsvp-heading">RSVP</h2>
-                <p class="rsvp-p">Kindly help us prepare our wedding event better by confirming your attendance through the following RSVP form:</p>
+            <div class="form-section">
+                <h2 class="form-heading" style="color: white; text-shadow: none;">RSVP</h2>
+                <p class="form-p">Kindly help us prepare our wedding event better by confirming your attendance through the following RSVP form:</p>
                 
                 <form id="rsvpForm" onsubmit="submitRSVP(event)">
                     <div class="form-group">
-                        <label>Name <span>*</span></label>
+                        <label>Name <span style="color: #e74c3c;">*</span></label>
                         <input type="text" id="rsvpName" class="form-control" placeholder="..." required>
                     </div>
                     
                     <div class="form-group">
-                        <label>Number of Guest(s) <span>*</span></label>
+                        <label>Number of Guest(s) <span style="color: #e74c3c;">*</span></label>
                         <select id="rsvpGuest" class="form-control" required>
                             <option value="0" disabled selected>0</option>
                             <option value="1">1 Person</option>
@@ -447,24 +446,12 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Will you be attending? <span>*</span></label>
+                        <label>Will you be attending? <span style="color: #e74c3c;">*</span></label>
                         <div class="radio-group">
-                            <label class="radio-label">
-                                <input type="radio" name="attendance" value="Yes. I will attend Holy Matrimony" required>
-                                Yes. I will attend Holy Matrimony
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="attendance" value="Yes. I will attend Reception">
-                                Yes. I will attend Reception
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="attendance" value="Yes. I will attend Both">
-                                Yes. I will attend Both
-                            </label>
-                            <label class="radio-label">
-                                <input type="radio" name="attendance" value="No. Sorry, I can't come">
-                                No. Sorry, I can't come
-                            </label>
+                            <label class="radio-label"><input type="radio" name="attendance" value="Yes. I will attend Holy Matrimony" required>Yes. I will attend Holy Matrimony</label>
+                            <label class="radio-label"><input type="radio" name="attendance" value="Yes. I will attend Reception">Yes. I will attend Reception</label>
+                            <label class="radio-label"><input type="radio" name="attendance" value="Yes. I will attend Both">Yes. I will attend Both</label>
+                            <label class="radio-label"><input type="radio" name="attendance" value="No. Sorry, I can't come">No. Sorry, I can't come</label>
                         </div>
                     </div>
                     
@@ -475,7 +462,6 @@
 
         <hr>
 
-        <!-- WEDDING GIFT -->
         <section class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -498,7 +484,37 @@
 
         <hr>
 
-        <!-- PENUTUP -->
+        <section class="section fade-in-element" style="padding-top: 0;">
+            <div class="form-section">
+                <h2 class="form-heading" style="color: white; text-shadow: none;">Wishes<br>& Prayers</h2>
+                <p class="form-p">Leave us your best wishes and sincere prayers here as we are excited to embark on this new journey together:</p>
+                
+                <form id="wishForm" onsubmit="submitWish(event)">
+                    <div class="form-group">
+                        <label>Fill your name:</label>
+                        <input type="text" id="wishName" class="form-control" placeholder="... *" required>
+                    </div>
+                    
+                    <div class="form-group" style="position: relative;">
+                        <label>Send wishes and prayers:</label>
+                        <textarea id="wishMessage" class="form-control" rows="5" placeholder="....." maxlength="1000" required></textarea>
+                        <small style="position: absolute; right: 10px; top: 38px; color: rgba(255,255,255,0.6); font-size: 0.75rem;">1000</small>
+                    </div>
+                    
+                    <button type="submit" class="btn-post" id="btnWishSubmit">Post Comment</button>
+                </form>
+
+                <div class="comments-list" id="commentsList">
+                    <div class="comment-item fade-in-element visible">
+                        <div class="comment-name">Feilita & Roy</div>
+                        <div class="comment-text">Happy wedding Samuel dan Fiorentia!! Bahagia dan sehat selalu sampai kakek nenek yaa 🤍🤍 God bless youu!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -508,7 +524,6 @@
         </section>
     </div>
 
-    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -551,6 +566,7 @@
             if (guestName) {
                 document.getElementById("nama-tamu").innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
                 document.getElementById("rsvpName").value = decodeURIComponent(guestName.replace(/\+/g, ' '));
+                document.getElementById("wishName").value = decodeURIComponent(guestName.replace(/\+/g, ' '));
             }
         }
 
@@ -561,18 +577,14 @@
             });
         }
 
-        /* --- LOGIKA PENGIRIMAN RSVP KE GOOGLE SHEETS --- */
+        /* --- FUNGSI SUBMIT RSVP --- */
         function submitRSVP(e) {
             e.preventDefault(); 
-            
-            // Mengubah tombol menjadi loading agar tamu tahu sedang diproses
             const btnSubmit = document.querySelector('.btn-submit');
             btnSubmit.innerHTML = "MENGIRIM...";
             btnSubmit.disabled = true;
 
-            // Link Web App Google Sheets Anda
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzjJAsTfWnkwZmht3iajvirhPIL10wmzP6WeQXo9ZNme26ln9aMKndvphPJXbw0KjhU/exec';
-            
             const formData = new FormData();
             formData.append('nama', document.getElementById("rsvpName").value);
             formData.append('jumlah', document.getElementById("rsvpGuest").value);
@@ -581,13 +593,52 @@
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     alert('Terima kasih! Konfirmasi kehadiran Anda telah tersimpan.');
-                    document.getElementById("rsvpForm").reset(); // Mengosongkan form
+                    document.getElementById("rsvpForm").reset();
                     btnSubmit.innerHTML = "SUBMIT";
                     btnSubmit.disabled = false;
                 })
                 .catch(error => {
                     alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
                     btnSubmit.innerHTML = "SUBMIT";
+                    btnSubmit.disabled = false;
+                });
+        }
+
+        /* --- FUNGSI SUBMIT WISHES & PRAYERS --- */
+        function submitWish(e) {
+            e.preventDefault();
+            const btnSubmit = document.getElementById('btnWishSubmit');
+            btnSubmit.innerHTML = "Posting...";
+            btnSubmit.disabled = true;
+
+            const name = document.getElementById("wishName").value;
+            const message = document.getElementById("wishMessage").value;
+
+            // Link Google Script Kedua (Khusus Wishes)
+            const wishScriptURL = 'https://script.google.com/macros/s/AKfycbwIV6B0gfaWze2tJn-4D7y5rVwgGukaJBbnWmNLlts5xhTg0KIFoeO-6mgyrFIi_CK7/exec';
+            
+            const formData = new FormData();
+            formData.append('nama', name);
+            formData.append('pesan', message);
+
+            const commentHTML = `
+                <div class="comment-item fade-in-element visible">
+                    <div class="comment-name">${name}</div>
+                    <div class="comment-text">${message}</div>
+                </div>
+            `;
+            document.getElementById("commentsList").insertAdjacentHTML('afterbegin', commentHTML);
+
+            fetch(wishScriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    document.getElementById("wishForm").reset();
+                    btnSubmit.innerHTML = "Post Comment";
+                    btnSubmit.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    document.getElementById("wishForm").reset();
+                    btnSubmit.innerHTML = "Post Comment";
                     btnSubmit.disabled = false;
                 });
         }
