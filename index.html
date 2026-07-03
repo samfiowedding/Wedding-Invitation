@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
+    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -48,11 +49,11 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Membuat jarak maksimal antara atas dan bawah */
+            justify-content: space-between; /* Menjaga jarak maksimal antara atas dan bawah */
             align-items: center;
             background: linear-gradient(rgba(44, 62, 80, 0.35), rgba(44, 62, 80, 0.45)), url('bg-utama.jpg.jpg') no-repeat center top/cover;
             color: white;
-            padding: 35px 20px 60px 20px; /* Padding bawah 60px aman untuk navigasi HP */
+            padding: 35px 20px 60px 20px; 
             z-index: 1000;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -62,11 +63,11 @@
         }
 
         .hero-top-group {
-            /* Mengelompokkan judul di paling atas agar tengahnya kosong */
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 5px;
+            margin-top: 8vh; /* REVISI: Agak diturunkan sedikit dari batas atas layar */
         }
 
         .logo-inisial {
@@ -81,7 +82,7 @@
         .cover-card {
             background: rgba(255, 255, 255, 0.15); 
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 20px; 
+            padding: 18px 20px 22px 20px; /* Padding disesuaikan agar lebih ramping */
             border-radius: 12px; 
             width: 100%; 
             max-width: 320px; 
@@ -237,16 +238,6 @@
         .btn-submit:hover { background: white; }
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
 
-        /* --- ANIMASI PANAH SCROLL --- */
-        .scroll-down-hint { margin-top: 30px; text-align: center; opacity: 0.9; }
-        .scroll-down-hint p { font-size: 0.95rem; color: #ffffff; font-style: italic; margin-bottom: 8px; letter-spacing: 0.5px; }
-        .bounce-arrow { width: 28px; height: 28px; fill: #d4af37; animation: bounce 2s infinite; }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
         .btn-post {
             width: 100%;
             padding: 14px;
@@ -352,17 +343,22 @@
 </head>
 <body>
 
+    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
+    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
+    <!-- 1. LAYAR COVER PENGUNCI (LAYOUT BARU) -->
     <section class="hero-cover" id="coverScreen">
+        
+        <!-- Grup Atas: Judul merapat ke atas & Tanggal Dikeluarkan dari Kotak -->
         <div class="hero-top-group">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF1.png" alt="SF Logo">
@@ -371,20 +367,24 @@
                 <span style="font-size: 2rem; display: block; margin: 2px 0;">&</span> 
                 Fiorentia
             </h1>
+            <!-- REVISI: Tanggal dipindah ke sini, tepat di bawah Fiorentia -->
+            <p class="font-cardo" style="margin-top: 15px; font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
         </div>
         
+        <!-- Karena menggunakan justify-content: space-between, bagian tengah di sini otomatis akan kosong bolong -->
+        
+        <!-- Grup Bawah: Kotak kaca HANYA berisi Dear & Tombol Open -->
         <div class="cover-card">
-            <p class="font-cardo" style="font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
-            <div style="margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 8px;">
-                <p class="font-cardo" style="font-size: 0.9rem; opacity: 0.9;">Dear:</p>
-                <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.35rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
-            </div>
+            <p class="font-cardo" style="font-size: 0.95rem; opacity: 0.9;">Dear:</p>
+            <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.45rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
             <button class="btn" style="padding: 10px 25px; font-size: 0.9rem; margin-top: 15px; width: 100%; font-weight: bold;" onclick="openInvitation()">Open Invitation</button>
         </div>
     </section>
 
+    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
+        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -396,6 +396,7 @@
 
         <hr>
 
+        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -409,6 +410,7 @@
 
         <hr>
 
+        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -422,6 +424,7 @@
 
         <hr>
 
+        <!-- OUR GALLERY & ACARA -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             
             <div style="margin-bottom: 30px;">
@@ -444,6 +447,7 @@
 
             <div class="font-cardo" style="margin-top: 50px; color: #2c3e50;">
                 
+                <!-- BLOK HOLY MATRIMONY -->
                 <div id="event-matrimony">
                     <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
                     <p style="font-weight: bold;">Saturday, August 15th 2026</p>
@@ -454,6 +458,7 @@
                 
                 <div id="event-divider" style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
 
+                <!-- BLOK RECEPTION -->
                 <div id="event-reception">
                     <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
                     <p style="font-weight: bold;">Saturday, August 15th 2026</p>
@@ -468,6 +473,7 @@
 
         <hr>
 
+        <!-- FORM RSVP -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">RSVP</h2>
@@ -499,18 +505,13 @@
                     <button type="submit" class="btn-submit">SUBMIT</button>
                 </form>
 
-                <div class="scroll-down-hint">
-                    <p>Please scroll down for Wedding Gift</p>
-                    <svg class="bounce-arrow" viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-
+                <!-- REVISI: Teks animasi scroll dihapus -->
             </div>
         </section>
 
         <hr>
 
+        <!-- WEDDING GIFT -->
         <section id="wedding-gift-section" class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -533,6 +534,7 @@
 
         <hr>
 
+        <!-- WISHES & PRAYERS -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">Wishes<br>& Prayers</h2>
@@ -560,6 +562,7 @@
 
         <hr>
 
+        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -569,6 +572,7 @@
         </section>
     </div>
 
+    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -622,7 +626,6 @@
         function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
             
-            // 1. Mengisi Nama Tamu
             const guestName = urlParams.get('to');
             if (guestName) {
                 const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
@@ -631,24 +634,20 @@
                 document.getElementById("wishName").value = decodedName;
             }
 
-            // 2. Logika Jenis Acara (Full vs Reception Only)
             const invType = urlParams.get('type');
-            window.currentInviteTypeLabel = "Holy Matrimony & Reception"; // Default
+            window.currentInviteTypeLabel = "Holy Matrimony & Reception";
 
             if (invType && invType.toLowerCase() === 'reception') {
-                // Sembunyikan Holy Matrimony, ubah jam Reception
                 document.getElementById("event-matrimony").style.display = "none";
                 document.getElementById("event-divider").style.display = "none";
                 document.getElementById("reception-time").innerText = "at 18.00 - 20.30 WIB";
                 window.currentInviteTypeLabel = "Reception Only (18.00)";
             } else {
-                // Tampilkan semua (kondisi awal)
                 document.getElementById("event-matrimony").style.display = "block";
                 document.getElementById("event-divider").style.display = "block";
                 document.getElementById("reception-time").innerText = "at 12.00 - 13.30 WIB";
             }
 
-            // 3. Logika Batasan Jumlah Pax (Tetap Sama)
             const pax = urlParams.get('pax');
             const rsvpGuestSelect = document.getElementById("rsvpGuest");
             const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
@@ -693,7 +692,6 @@
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzjJAsTfWnkwZmht3iajvirhPIL10wmzP6WeQXo9ZNme26ln9aMKndvphPJXbw0KjhU/exec';
             const formData = new FormData();
             
-            // Menggabungkan pilihan (Yes/No) dengan Tipe Undangan agar jelas di Excel
             const attendanceVal = document.querySelector('input[name="attendance"]:checked').value;
             const finalAttendanceStatus = `${attendanceVal} - [${window.currentInviteTypeLabel}]`;
 
