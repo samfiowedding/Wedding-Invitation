@@ -17,7 +17,7 @@
             color: #2c3e50; 
             text-align: center; 
             line-height: 1.8;
-            overflow-x: hidden; /* Mencegah halaman bergeser ke samping secara tidak sengaja */
+            overflow-x: hidden; 
         }
         
         .font-brightwall {
@@ -48,6 +48,16 @@
             background: linear-gradient(rgba(44, 62, 80, 0.45), rgba(44, 62, 80, 0.55)), url('bg-utama.jpg.jpg') no-repeat center center/cover;
             color: white;
             padding: 40px 20px;
+        }
+
+        /* Pengaturan Gaya untuk Logo Kecil SF.png */
+        .logo-inisial {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            margin: 10px auto;
+            display: block;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3)); /* Memberikan bayangan halus pada logo */
         }
 
         .section {
@@ -82,7 +92,7 @@
             box-shadow: 0 6px 15px rgba(44, 62, 80, 0.1);
             border-radius: 6px;
             overflow: hidden;
-            aspect-ratio: 3 / 4; /* Mengubah proporsi frame menjadi 3:4 tegak portrait */
+            aspect-ratio: 3 / 4; 
         }
         .kolase-item img {
             width: 100%;
@@ -135,19 +145,18 @@
             margin-bottom: 5px;
         }
 
-        /* --- RESPONSIVITAS UKURAN FONT SUPAYA 1 BARIS TANPA SCROLL --- */
+        /* --- RESPONSIVITAS UKURAN FONT SUPAYA 1 BARIS --- */
         .nama-lengkap {
-            font-size: 1.6rem; /* Ukuran font ideal untuk HP agar pas 1 baris */
+            font-size: 1.6rem; 
             margin: 10px 0; 
             white-space: nowrap;
         }
         .ortu-lengkap {
-            font-size: 0.85rem; /* Mengecilkan sedikit info orang tua agar tetap 1 baris di layar kecil */
+            font-size: 0.85rem; 
             color: #555; 
             white-space: nowrap;
         }
 
-        /* Jika dibuka di layar laptop/tablet yang lebih lebar, font membesar otomatis secara aman */
         @media(min-width: 480px) {
             .nama-lengkap { font-size: 2.3rem; }
             .ortu-lengkap { font-size: 0.95rem; }
@@ -158,10 +167,15 @@
 
     <!-- 1. COVER UTAMA -->
     <section class="hero-cover">
+        <!-- Atasan Cover -->
         <div style="margin-top: 20px;">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">wedding invitation</p>
+            
+            <!-- LOGO INISIAL SF.PNG DI BAWAH TULISAN WEDDING INVITATION -->
+            <img class="logo-inisial" src="SF.png" alt="SF Logo">
         </div>
         
+        <!-- Tengah Cover: Nama bersusun ke bawah -->
         <div>
             <h1 class="font-brightwall" style="font-size: 3.8rem;">
                 Samuel <br>
@@ -170,6 +184,7 @@
             </h1>
         </div>
         
+        <!-- Bawahan Cover -->
         <div style="margin-bottom: 20px; background: rgba(44, 62, 80, 0.4); padding: 20px; border-radius: 10px; width: 100%; max-width: 320px; backdrop-filter: blur(2px);">
             <p class="font-cardo" style="font-size: 1.2rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); font-weight: bold;">15 Agustus 2026</p>
             <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
