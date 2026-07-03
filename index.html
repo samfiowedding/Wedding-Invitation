@@ -473,7 +473,8 @@
                         <input type="text" id="rsvpName" class="form-control" placeholder="..." required>
                     </div>
                     
-                    <div class="form-group">
+                    <!-- REVISI: Pembungkus kolom Number of Guests diberi ID rsvpGuestGroup agar bisa diatur dinamis via JS -->
+                    <div class="form-group" id="rsvpGuestGroup">
                         <label>Number of Guest(s) <span style="color: #e74c3c;">*</span></label>
                         <select id="rsvpGuest" class="form-control" required>
                             <option value="0" disabled selected>0</option>
@@ -542,7 +543,7 @@
                 </form>
 
                 <div class="comments-list" id="commentsList">
-                    <!-- Komentar akan muncul di sini setelah disubmit -->
+                    <!-- Komentar dummy sudah dihapus, kotak akan kosong saat awal -->
                 </div>
             </div>
         </section>
@@ -596,13 +597,49 @@
             }
         }
 
-        function getGuestName() {
+        /* --- REVISI: Fungsi getGuestName diubah menjadi getGuestInfo untuk membaca limit RSVP Dinamis --- */
+        function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
+            
+            // 1. Ambil Nama Tamu (Parameter ?to=...)
             const guestName = urlParams.get('to');
             if (guestName) {
-                document.getElementById("nama-tamu").innerText = decodeURIComponent(guestName.replace(/\+/g, ' '));
-                document.getElementById("rsvpName").value = decodeURIComponent(guestName.replace(/\+/g, ' '));
-                document.getElementById("wishName").value = decodeURIComponent(guestName.replace(/\+/g, ' '));
+                const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+                document.getElementById("nama-tamu").innerText = decodedName;
+                document.getElementById("rsvpName").value = decodedName;
+                document.getElementById("wishName").value = decodedName;
+            }
+
+            // 2. Ambil Settingan Pax Dinamis (Parameter &pax=...)
+            const pax = urlParams.get('pax');
+            const rsvpGuestSelect = document.getElementById("rsvpGuest");
+            const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
+
+            if (pax === '1') {
+                // Jika cuma 1 orang, sembunyikan dropdown dan pasang nilai mati ke "1"
+                rsvpGuestGroup.style.display = 'none';
+                rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
+            } else if (pax && pax.toLowerCase() === 'keluarga') {
+                // Jika 1 keluarga, sembunyikan dropdown dan pasang nilai mati ke "Keluarga"
+                rsvpGuestGroup.style.display = 'none';
+                rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>1 Keluarga</option>';
+            } else if (pax && parseInt(pax) > 1) {
+                // Jika 2 orang atau lebih, buatkan dropdown opsi secara dinamis
+                let maxPax = parseInt(pax);
+                let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
+                for(let i = 1; i <= maxPax; i++) {
+                    optionsHTML += `<option value="${i}">${i} Person${i>1?'s':''}</option>`;
+                }
+                rsvpGuestSelect.innerHTML = optionsHTML;
+                rsvpGuestGroup.style.display = 'block';
+            } else {
+                // Default jika link dibagikan tanpa kode &pax=... (Standar 2 orang)
+                rsvpGuestGroup.style.display = 'block';
+                rsvpGuestSelect.innerHTML = `
+                    <option value="0" disabled selected>0</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 Persons</option>
+                `;
             }
         }
 
@@ -613,6 +650,7 @@
             });
         }
 
+        /* --- FUNGSI SUBMIT RSVP --- */
         function submitRSVP(e) {
             e.preventDefault(); 
             const btnSubmit = document.querySelector('.btn-submit');
@@ -639,6 +677,7 @@
                 });
         }
 
+        /* --- FUNGSI SUBMIT WISHES & PRAYERS --- */
         function submitWish(e) {
             e.preventDefault();
             const btnSubmit = document.getElementById('btnWishSubmit');
@@ -689,7 +728,7 @@
 
         window.addEventListener('scroll', handleScrollAnimation);
         window.onload = () => {
-            getGuestName();
+            getGuestInfo(); // Memanggil fungsi informasi tamu yang baru
             window.scrollTo(0, 0); 
         };
     </script>
