@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding of Samuel & Fiorentia</title>
     
-    <!-- Mengambil Font Premium dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
 
     <style>
@@ -40,7 +39,7 @@
             font-family: 'Cardo', serif;
         }
 
-        /* --- SCREEN COVER UTAMA DENGAN LAYOUT BARU --- */
+        /* --- SCREEN COVER UTAMA (TIRAI PENGUNCI) --- */
         .hero-cover {
             position: fixed;
             top: 0;
@@ -53,7 +52,7 @@
             align-items: center;
             background: linear-gradient(rgba(44, 62, 80, 0.35), rgba(44, 62, 80, 0.45)), url('bg-utama.jpg.jpg') no-repeat center top/cover;
             color: white;
-            padding: 35px 20px 60px 20px; 
+            padding: 40px 20px;
             z-index: 1000;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
@@ -62,24 +61,17 @@
             transform: translateY(-100vh);
         }
 
-        .hero-top-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            margin-top: 8vh; 
-        }
-
         .logo-inisial {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            margin: 0 auto;
+            margin: 5px auto;
             display: block;
             filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.4)) brightness(1.2);
         }
 
         .cover-card {
+            margin-bottom: 65px; 
             background: rgba(255, 255, 255, 0.15); 
             border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 18px 20px 22px 20px; 
@@ -238,6 +230,31 @@
         .btn-submit:hover { background: white; }
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
 
+        /* --- ANIMASI PANAH SCROLL --- */
+        .scroll-down-hint {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.9;
+        }
+        .scroll-down-hint p {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .bounce-arrow {
+            width: 28px;
+            height: 28px;
+            fill: #d4af37; 
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
         .btn-post {
             width: 100%;
             padding: 14px;
@@ -343,19 +360,16 @@
 </head>
 <body>
 
-    <!-- PEMUTAR MUSIK -->
     <audio id="wedding-music" loop>
         <source src="laguwedding.mp3" type="audio/mp3">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK -->
     <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
         <svg id="music-icon" viewBox="0 0 24 24">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
     </div>
 
-    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         
         <div class="hero-top-group">
@@ -376,10 +390,8 @@
         </div>
     </section>
 
-    <!-- 2. HALAMAN UTAMA ISI UNDANGAN -->
     <div id="main-content">
 
-        <!-- AYAT ALKITAB -->
         <section class="section fade-in-element">
             <img class="foto-prewed" src="ayat.jpg.jpg" alt="Foto Ayat">
             <p class="font-cardo" style="font-style: italic; font-size: 1.1rem; padding: 0 10px; color: #34495e;">
@@ -391,7 +403,6 @@
 
         <hr>
 
-        <!-- THE GROOM -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the groom</p>
             <img class="foto-prewed" src="thegroom.png" alt="Samuel">
@@ -405,7 +416,6 @@
 
         <hr>
 
-        <!-- THE BRIDE -->
         <section class="section fade-in-element">
             <p class="font-cardo" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: #7f8c8d;">the bride</p>
             <img class="foto-prewed" src="thebride.png" alt="Fiorentia">
@@ -419,7 +429,6 @@
 
         <hr>
 
-        <!-- OUR GALLERY & ACARA -->
         <section class="section fade-in-element" style="background-color: #eef3f7; border-radius: 12px; padding: 50px 20px;">
             
             <div style="margin-bottom: 30px;">
@@ -427,7 +436,6 @@
                 <p class="font-cardo" style="font-size: 1rem; color: #7f8c8d; font-style: italic; margin-top: 5px;">Moments of love we captured together.</p>
             </div>
 
-            <!-- REVISI: Nama file diubah menambahkan .jpg.jpg menyesuaikan dengan yang ada di GitHub -->
             <div class="kolase-container">
                 <div class="kolase-item"><img src="pw1.jpg.jpg" alt="Prewedding 1"></div>
                 <div class="kolase-item"><img src="pw2.jpg.jpg" alt="Prewedding 2"></div>
@@ -467,7 +475,6 @@
 
         <hr>
 
-        <!-- FORM RSVP -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">RSVP</h2>
@@ -483,8 +490,6 @@
                         <label>Number of Guest(s) <span style="color: #e74c3c;">*</span></label>
                         <select id="rsvpGuest" class="form-control" required>
                             <option value="0" disabled selected>0</option>
-                            <option value="1">1 Person</option>
-                            <option value="2">2 Persons</option>
                         </select>
                     </div>
                     
@@ -503,7 +508,6 @@
 
         <hr>
 
-        <!-- WEDDING GIFT -->
         <section id="wedding-gift-section" class="section font-cardo fade-in-element">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px; font-weight: normal; letter-spacing: 2px; color: #3a536b;">Wedding Gift</h2>
             <p style="font-size: 1rem; color: #555; padding: 0 15px;">
@@ -526,7 +530,6 @@
 
         <hr>
 
-        <!-- WISHES & PRAYERS -->
         <section class="section fade-in-element" style="padding-top: 0;">
             <div class="form-section">
                 <h2 class="form-heading" style="color: white; text-shadow: none;">Wishes<br>& Prayers</h2>
@@ -554,7 +557,6 @@
 
         <hr>
 
-        <!-- PENUTUP -->
         <section class="section font-cardo fade-in-element" style="padding-bottom: 80px;">
             <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 35px; color: #34495e; padding: 0 10px;">
                 Our happiness will be complete with your presence and blessing in this celebration of love. Thank you for your kind wishes, prayers, love, and attention given.
@@ -562,12 +564,10 @@
             <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
             <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
             
-            <!-- REVISI: Logo ditambahkan di paling akhir halaman -->
             <img src="logoSF1.png" alt="SF Logo" style="width: 70px; height: 70px; object-fit: contain; margin-top: 40px; display: inline-block; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.1)); opacity: 0.85;">
         </section>
     </div>
 
-    <!-- --- JAVASCRIPT --- -->
     <script>
         const audio = document.getElementById("wedding-music");
         const musicBtn = document.getElementById("musicBtn");
@@ -618,6 +618,7 @@
             }
         }
 
+        /* --- REVISI: Logika Pembatasan Tamu Dinamis (4 Opsi Baru) --- */
         function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
             
@@ -643,17 +644,33 @@
                 document.getElementById("reception-time").innerText = "at 12.00 - 13.30 WIB";
             }
 
-            const pax = urlParams.get('pax');
+            // Membaca parameter pax secara case-insensitive
+            const pax = urlParams.get('pax') ? urlParams.get('pax').toLowerCase() : '';
             const rsvpGuestSelect = document.getElementById("rsvpGuest");
             const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
 
             if (pax === '1') {
+                // Opsi 2: Teks "1 Person" (Terkunci)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
-            } else if (pax && pax.toLowerCase() === 'keluarga') {
+            } else if (pax === 'family' || pax === 'keluarga') {
+                // Opsi 3: Teks "Family" (Terkunci)
                 rsvpGuestGroup.style.display = 'block';
-                rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>Family</option>';
-            } else if (pax && parseInt(pax) > 1) {
+                rsvpGuestSelect.innerHTML = '<option value="Family" selected>Family</option>';
+            } else if (pax.startsWith('family') || pax.startsWith('keluarga')) {
+                // Opsi 4: Family dengan pilihan custom dari 1 sampai N (Maksimal 5)
+                let numStr = pax.replace('family', '').replace('keluarga', '');
+                let maxPax = parseInt(numStr) || 5; 
+                if (maxPax > 5) maxPax = 5; 
+                
+                let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
+                for(let i = 1; i <= maxPax; i++) {
+                    optionsHTML += `<option value="${i} Person${i>1?'s':''} (Family)">${i} Person${i>1?'s':''}</option>`;
+                }
+                rsvpGuestSelect.innerHTML = optionsHTML;
+                rsvpGuestGroup.style.display = 'block';
+            } else if (pax && parseInt(pax) > 0) {
+                // Mengakomodasi jika diinput angka custom biasa langsung (pax=3, pax=4, dll)
                 let maxPax = parseInt(pax);
                 let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
                 for(let i = 1; i <= maxPax; i++) {
@@ -662,9 +679,10 @@
                 rsvpGuestSelect.innerHTML = optionsHTML;
                 rsvpGuestGroup.style.display = 'block';
             } else {
+                // Opsi 1: Default tanpa parameter atau pax=2 (Pilihan 1 atau 2 orang)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = `
-                    <option value="0" disabled selected>0</option>
+                    <option value="0" disabled selected>Select number of guests</option>
                     <option value="1">1 Person</option>
                     <option value="2">2 Persons</option>
                 `;
