@@ -355,10 +355,9 @@
         </svg>
     </div>
 
-    <!-- 1. LAYAR COVER PENGUNCI (LAYOUT BARU) -->
+    <!-- 1. LAYAR COVER PENGUNCI -->
     <section class="hero-cover" id="coverScreen">
         
-        <!-- Grup Atas -->
         <div class="hero-top-group">
             <p class="font-cardo" style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">wedding invitation</p>
             <img class="logo-inisial" src="logoSF1.png" alt="SF Logo">
@@ -370,7 +369,6 @@
             <p class="font-cardo" style="margin-top: 15px; font-size: 1.15rem; letter-spacing: 2px; text-shadow: 1px 1px 3px rgba(0,0,0,0.6); font-weight: bold; color: #d4af37;">15 Agustus 2026</p>
         </div>
         
-        <!-- Grup Bawah -->
         <div class="cover-card">
             <p class="font-cardo" style="font-size: 0.95rem; opacity: 0.9;">Dear:</p>
             <h3 id="nama-tamu" class="font-cardo" style="font-size: 1.45rem; margin-top: 2px; font-weight: normal; letter-spacing: 1px;">Nama Tamu</h3>
@@ -429,22 +427,22 @@
                 <p class="font-cardo" style="font-size: 1rem; color: #7f8c8d; font-style: italic; margin-top: 5px;">Moments of love we captured together.</p>
             </div>
 
+            <!-- REVISI: Nama file diubah menambahkan .jpg.jpg menyesuaikan dengan yang ada di GitHub -->
             <div class="kolase-container">
-                <div class="kolase-item"><img src="pw1.jpg" alt="Prewedding 1"></div>
-                <div class="kolase-item"><img src="pw2.jpg" alt="Prewedding 2"></div>
-                <div class="kolase-item"><img src="pw3.jpg" alt="Prewedding 3"></div>
-                <div class="kolase-item"><img src="pw4.jpg" alt="Prewedding 4"></div>
-                <div class="kolase-item"><img src="pw5.jpg" alt="Prewedding 5"></div>
-                <div class="kolase-item"><img src="pw6.jpg" alt="Prewedding 6"></div>
-                <div class="kolase-item"><img src="pw7.jpg" alt="Prewedding 7"></div>
-                <div class="kolase-item"><img src="pw8.jpg" alt="Prewedding 8"></div>
-                <div class="kolase-item"><img src="pw9.jpg" alt="Prewedding 9"></div>
-                <div class="kolase-item"><img src="pw10.jpg" alt="Prewedding 10"></div>
+                <div class="kolase-item"><img src="pw1.jpg.jpg" alt="Prewedding 1"></div>
+                <div class="kolase-item"><img src="pw2.jpg.jpg" alt="Prewedding 2"></div>
+                <div class="kolase-item"><img src="pw3.jpg.jpg" alt="Prewedding 3"></div>
+                <div class="kolase-item"><img src="pw4.jpg.jpg" alt="Prewedding 4"></div>
+                <div class="kolase-item"><img src="pw5.jpg.jpg" alt="Prewedding 5"></div>
+                <div class="kolase-item"><img src="pw6.jpg.jpg" alt="Prewedding 6"></div>
+                <div class="kolase-item"><img src="pw7.jpg.jpg" alt="Prewedding 7"></div>
+                <div class="kolase-item"><img src="pw8.jpg.jpg" alt="Prewedding 8"></div>
+                <div class="kolase-item"><img src="pw9.jpg.jpg" alt="Prewedding 9"></div>
+                <div class="kolase-item"><img src="pw10.jpg.jpg" alt="Prewedding 10"></div>
             </div>
 
             <div class="font-cardo" style="margin-top: 50px; color: #2c3e50;">
                 
-                <!-- BLOK HOLY MATRIMONY -->
                 <div id="event-matrimony">
                     <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Holy Matrimony</h2>
                     <p style="font-weight: bold;">Saturday, August 15th 2026</p>
@@ -455,7 +453,6 @@
                 
                 <div id="event-divider" style="margin: 35px 0; border-top: 1px dashed #3a536b; width: 25%; margin-left: auto; margin-right: auto; opacity: 0.5;"></div>
 
-                <!-- BLOK RECEPTION -->
                 <div id="event-reception">
                     <h2 style="font-size: 1.9rem; margin-bottom: 8px; font-weight: normal; letter-spacing: 1px; color: #3a536b;">Reception</h2>
                     <p style="font-weight: bold;">Saturday, August 15th 2026</p>
@@ -564,6 +561,9 @@
             </p>
             <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
             <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
+            
+            <!-- REVISI: Logo ditambahkan di paling akhir halaman -->
+            <img src="logoSF1.png" alt="SF Logo" style="width: 70px; height: 70px; object-fit: contain; margin-top: 40px; display: inline-block; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.1)); opacity: 0.85;">
         </section>
     </div>
 
@@ -651,7 +651,6 @@
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
             } else if (pax && pax.toLowerCase() === 'keluarga') {
-                // REVISI: Keluarga ditampilkan dengan pilihan terkunci
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="Keluarga" selected>Family</option>';
             } else if (pax && parseInt(pax) > 1) {
