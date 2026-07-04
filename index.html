@@ -61,6 +61,14 @@
             transform: translateY(-100vh);
         }
 
+        .hero-top-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8vh; 
+        }
+
         .logo-inisial {
             width: 70px;
             height: 70px;
@@ -71,7 +79,6 @@
         }
 
         .cover-card {
-            margin-bottom: 65px; 
             background: rgba(255, 255, 255, 0.15); 
             border: 1px solid rgba(255, 255, 255, 0.25);
             padding: 18px 20px 22px 20px; 
@@ -80,7 +87,7 @@
             max-width: 320px; 
             backdrop-filter: blur(8px); 
             box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-            margin-bottom: 0; 
+            margin-bottom: 45px; /* REVISI: Dinaikkan lagi posisinya agar lebih tinggi dari bawah layar */
         }
 
         /* --- KONTEN UTAMA --- */
@@ -229,31 +236,6 @@
         }
         .btn-submit:hover { background: white; }
         .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-
-        /* --- ANIMASI PANAH SCROLL --- */
-        .scroll-down-hint {
-            margin-top: 30px;
-            text-align: center;
-            opacity: 0.9;
-        }
-        .scroll-down-hint p {
-            font-size: 0.95rem;
-            color: #ffffff;
-            font-style: italic;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        .bounce-arrow {
-            width: 28px;
-            height: 28px;
-            fill: #d4af37; 
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
 
         .btn-post {
             width: 100%;
@@ -489,7 +471,7 @@
                     <div class="form-group" id="rsvpGuestGroup">
                         <label>Number of Guest(s) <span style="color: #e74c3c;">*</span></label>
                         <select id="rsvpGuest" class="form-control" required>
-                            <option value="0" disabled selected>0</option>
+                            <option value="0" disabled selected>Select number of guests</option>
                         </select>
                     </div>
                     
@@ -564,7 +546,7 @@
             <img class="foto-prewed" src="seeyou.jpg.jpg" alt="See You">
             <h3 class="font-brightwall" style="font-size: 1.5rem; letter-spacing: 1px; margin-top: 25px;">See you on our wedding day!</h3>
             
-            <img src="logoSF1.png" alt="SF Logo" style="width: 70px; height: 70px; object-fit: contain; margin-top: 40px; display: inline-block; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.1)); opacity: 0.85;">
+            <img src="SFlogo.png" alt="SF Logo" style="width: 70px; height: 70px; object-fit: contain; margin-top: 40px; display: inline-block; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.1)); opacity: 0.85;">
         </section>
     </div>
 
@@ -618,7 +600,6 @@
             }
         }
 
-        /* --- REVISI: Logika Pembatasan Tamu Dinamis (4 Opsi Baru) --- */
         function getGuestInfo() {
             const urlParams = new URLSearchParams(window.location.search);
             
@@ -644,21 +625,17 @@
                 document.getElementById("reception-time").innerText = "at 12.00 - 13.30 WIB";
             }
 
-            // Membaca parameter pax secara case-insensitive
             const pax = urlParams.get('pax') ? urlParams.get('pax').toLowerCase() : '';
             const rsvpGuestSelect = document.getElementById("rsvpGuest");
             const rsvpGuestGroup = document.getElementById("rsvpGuestGroup");
 
             if (pax === '1') {
-                // Opsi 2: Teks "1 Person" (Terkunci)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="1" selected>1 Person</option>';
             } else if (pax === 'family' || pax === 'keluarga') {
-                // Opsi 3: Teks "Family" (Terkunci)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = '<option value="Family" selected>Family</option>';
             } else if (pax.startsWith('family') || pax.startsWith('keluarga')) {
-                // Opsi 4: Family dengan pilihan custom dari 1 sampai N (Maksimal 5)
                 let numStr = pax.replace('family', '').replace('keluarga', '');
                 let maxPax = parseInt(numStr) || 5; 
                 if (maxPax > 5) maxPax = 5; 
@@ -670,7 +647,6 @@
                 rsvpGuestSelect.innerHTML = optionsHTML;
                 rsvpGuestGroup.style.display = 'block';
             } else if (pax && parseInt(pax) > 0) {
-                // Mengakomodasi jika diinput angka custom biasa langsung (pax=3, pax=4, dll)
                 let maxPax = parseInt(pax);
                 let optionsHTML = '<option value="0" disabled selected>Select number of guests</option>';
                 for(let i = 1; i <= maxPax; i++) {
@@ -679,7 +655,6 @@
                 rsvpGuestSelect.innerHTML = optionsHTML;
                 rsvpGuestGroup.style.display = 'block';
             } else {
-                // Opsi 1: Default tanpa parameter atau pax=2 (Pilihan 1 atau 2 orang)
                 rsvpGuestGroup.style.display = 'block';
                 rsvpGuestSelect.innerHTML = `
                     <option value="0" disabled selected>Select number of guests</option>
